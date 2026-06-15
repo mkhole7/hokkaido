@@ -161,7 +161,10 @@
   /* ===== 일자별 미니맵 ===== */
   .daymap { height:240px; border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-bottom:14px; background:#e8e8e8; z-index:1; position:relative; }
   .daymap::before { content:'🗺️ 지도 불러오는 중… (인터넷 연결 필요)'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:12px; color:#888; z-index:0; }
-  .daymap-cap { font-size:11px; color:var(--muted); margin:-8px 0 14px; padding:0 2px; line-height:1.5; }
+  .daymap-cap { font-size:11px; color:var(--muted); margin:-8px 0 10px; padding:0 2px; line-height:1.5; }
+  .dir-btn { display:flex; align-items:center; justify-content:center; gap:7px; background:linear-gradient(135deg,#1a73e8,#4285f4); color:#fff; font-weight:700; font-size:13px; text-decoration:none; padding:11px 14px; border-radius:10px; margin-bottom:16px; border:1px solid #5b9cf6; }
+  .dir-btn:active { opacity:.85; }
+  .dir-btn span.sub { font-size:10px; font-weight:400; opacity:.85; }
   .leaflet-popup-content-wrapper { background:#161b2e; color:#e0e6f5; border-radius:9px; border:1px solid #3a4a7a; }
   .leaflet-popup-tip { background:#161b2e; border:1px solid #3a4a7a; }
   .leaflet-popup-content { margin:10px 12px; font-family:'Noto Sans KR',sans-serif; font-size:12px; line-height:1.5; }
@@ -325,6 +328,7 @@
   </div>
   <div class="daymap" id="map0"></div>
   <div class="daymap-cap">🚌 신치토세공항 → 스스키노(스트림 호텔) 약 1시간 30분 · 이후 징기스칸·AOAO·사계마르쉐 전부 도보 5분 내</div>
+  <a class="dir-btn" href="https://www.google.com/maps/dir/新千歳空港/SAPPORO+STREAM+HOTEL" target="_blank">🧭 이 날 경로 구글맵 길찾기 <span class="sub">(공항→호텔)</span></a>
   <div class="acc" data-d="0" onclick="tog(this)">
     <div class="acc-head"><div class="acc-icon">✈️</div><div class="acc-meta"><div class="acc-time">오후 · 이동·체크인</div><div class="acc-name">김해 → 신치토세 → 스트림 호텔 (리무진)</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
@@ -347,7 +351,7 @@
       <div class="place-d">스스키노 · 17:00~새벽5시 · 7월 성수기 오픈런 권장</div>
       <div class="item"><div class="dot"></div><span><b>18:00</b> 도착 권장 (피크 전) · 오늘은 렌트 전이라 음주 OK 🍺</span></div>
       <div class="item"><div class="dot"></div><span>🍺 <b>삿포로 클래식</b> 생맥주 — 홋카이도 한정 판매라 본토에서 꼭! 징기스칸과 환상 궁합</span></div>
-      <div class="item"><div class="dot"></div><span>🍦 식후 아이스크림 — 스스키노 일대나 코코노 건물 내 디저트로 입가심</span></div>
+      <div class="item"><div class="dot"></div><span>🍦 식후 아이스크림 — <b>키노토야(KINOTOYA)</b> 소프트아이스크림·치즈타르트 (홋카이도 대표 디저트)</span></div>
     </div></div>
   </div>
   <div class="acc" data-d="0" onclick="tog(this)">
@@ -400,7 +404,8 @@
     <div class="dh-title">🌋 삿포로 오전 → 오후 도야호 출발 · 코노스미카</div>
   </div>
   <div class="daymap" id="map1"></div>
-  <div class="daymap-cap">🚗 스스키노 → 장외시장(점심) → 도야호 · 총 약 2시간 · 도야호 도착 후 유람선/로프웨이 관광 → 코노스미카 체크인</div>
+  <div class="daymap-cap">🚗 스스키노 → 키타노구루메테이(장외시장 점심) → 도야호 · 총 약 2시간 · 도야호 도착 후 유람선/로프웨이 관광 → 코노스미카 체크인</div>
+  <a class="dir-btn" href="https://www.google.com/maps/dir/トヨタレンタカー地下鉄すすきの駅前店/海鮮市場北のグルメ亭/洞爺湖汽船/ザ・レイクスイート湖の栖" target="_blank">🧭 이 날 경로 구글맵 길찾기 <span class="sub">(렌트→키타노구루메테이→도야호→코노스미카)</span></a>
   <div class="warnbox" style="padding:0; margin-bottom:14px;">
     <div class="warnbox-in">
       <div class="warnbox-h">⏰ 확정 일정 — 렌트 11:00 픽업 / 코노스미카 19시 전 체크인</div>
@@ -453,11 +458,11 @@
     </div></div>
   </div>
   <div class="acc" data-d="1" onclick="tog(this)">
-    <div class="acc-head"><div class="acc-icon">🦀</div><div class="acc-meta"><div class="acc-time">낮 · 11:30~13:00 · 출발 전 점심</div><div class="acc-name">삿포로 장외시장 점심</div></div><div class="acc-arrow">▾</div></div>
+    <div class="acc-head"><div class="acc-icon">🦀</div><div class="acc-meta"><div class="acc-time">낮 · 11:30~13:00 · 출발 전 점심</div><div class="acc-name">키타노구루메테이 (장외시장)</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
-      <div class="place"><span class="place-n">📍 삿포로 장외시장 (札幌場外市場)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E5%B9%8C%E5%A0%B4%E5%A4%96%E5%B8%82%E5%A0%B4" target="_blank">🗺️ 맵</a></div>
-      <div class="place-d"><b>11:30</b> 렌트카 픽업 후 차로 이동 (스스키노→장외시장 약 15분) · 도야호 가는 길목 방향이라 동선 OK</div>
-      <div class="item"><div class="dot"></div><span>🦀 해산물 식당 즐비 — 카이센동·게·성게 · 주차장 완비라 렌트 후 들르기 좋음</span></div>
+      <div class="place"><span class="place-n">📍 키타노구루메테이 (장외시장)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E9%AE%AE%E5%B8%82%E5%A0%B4%E5%8C%97%E3%81%AE%E3%82%B0%E3%83%AB%E3%83%A1%E4%BA%AD" target="_blank">🗺️ 맵</a></div>
+      <div class="place-d"><b>11:30</b> 삿포로 중앙도매시장(장외시장) 내 · 아침 7시부터 영업 · 320석 대형 · 카이센동·게·생선구이</div>
+      <div class="item"><div class="dot"></div><span>🦀 추성훈도 다녀간 유명 맛집 · 주차장 완비라 렌트 후 들르기 좋음</span></div>
       <div class="item"><div class="dot"></div><span><b>13:00</b> 점심 후 도야호로 출발</span></div>
     </div></div>
   </div>
@@ -506,6 +511,7 @@
   </div>
   <div class="daymap" id="map2"></div>
   <div class="daymap-cap">🚗 도야호 → 후라노(팜토미타) 약 3시간 → 삿포로 약 2시간 · 총 운전 ~5시간 (가장 긴 날) · 19시 렌트 반납 후 오도리 숙박</div>
+  <a class="dir-btn" href="https://www.google.com/maps/dir/ザ・レイクスイート湖の栖/ファーム富田/トヨタレンタカー地下鉄すすきの駅前店/The+Royal+Park+Canvas+Sapporo+Odori+Park" target="_blank">🧭 이 날 경로 구글맵 길찾기 <span class="sub">(코노스미카→팜토미타→렌트반납→호텔)</span></a>
   <div class="warnbox" style="padding:0; margin-bottom:14px;">
     <div class="warnbox-in">
       <div class="warnbox-h">오늘이 가장 빡센 운전일 — 아침 일찍 출발!</div>
@@ -542,10 +548,12 @@
     <div class="acc-head"><div class="acc-icon">🌸</div><div class="acc-meta"><div class="acc-time">점심~오후 · 13:00~16:00 · 후라노</div><div class="acc-name">팜토미타 + 멜론 (필수 집중)</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
       <div class="place"><span class="place-n">📍 팜토미타 (Farm Tomita)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E5%AF%8C%E7%94%B0" target="_blank">🗺️ 맵</a></div>
-      <div class="place-d"><b>13:00</b> 라벤더 절정! · 입장 무료 · 라벤더 아이스크림 · 점심도 여기서</div>
+      <div class="place-d"><b>12:00</b> 라벤더 절정! · 입장 무료 · 🍦 라벤더 소프트아이스크림 필수</div>
       <div class="place"><span class="place-n">📍 토미타 멜론하우스</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%81%BF%E3%81%9F%E3%83%A1%E3%83%AD%E3%83%B3%E3%83%8F%E3%82%A6%E3%82%B9" target="_blank">🗺️ 맵</a></div>
-      <div class="place-d"><b>15:00</b> 팜토미타 바로 옆 · 후라노 멜론 반 갈라 먹기 🍈</div>
-      <div class="item"><div class="dot"></div><span>⏱️ 비에이는 생략, 팜토미타+멜론에 집중 · <b>16:00</b> 삿포로로 출발</span></div>
+      <div class="place-d"><b>13:00</b> 팜토미타 바로 옆 · 후라노 멜론 반 갈라 먹기 🍈</div>
+      <div class="place"><span class="place-n">📍 점심 — 후라노/비에이 라멘 (가는 길)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E5%AF%8C%E8%89%AF%E9%87%8E%20%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3" target="_blank">🗺️ 맵</a></div>
+      <div class="place-d"><b>13:30</b> 멜론·아이스크림으로 가볍게 했으면 삿포로 방면 가는 길에 라멘으로 든든히</div>
+      <div class="item"><div class="dot"></div><span>⏱️ 비에이는 생략, 팜토미타+멜론 집중 · <b>16:00</b> 삿포로로 출발 (반납 시간 엄수)</span></div>
     </div></div>
   </div>
   <div class="acc" data-d="2" onclick="tog(this)">
@@ -574,7 +582,9 @@
       <div class="place-d">삿포로 대표 스프카레 명점 · 오도리/스스키노 사이 · 웨이팅 잦으니 일찍</div>
       <div class="place"><span class="place-n">📍 스프카레 SAMA / 스아게+ (대안)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AC%E3%83%BC%20%E3%81%99%E3%81%82%E3%81%92%20%E6%9C%AD%E5%B9%8C" target="_blank">🗺️ 맵</a></div>
       <div class="place-d">가라쿠 대기 길면 인근 스프카레 명점으로 · 홋카이도 채소 듬뿍</div>
-      <div class="item"><div class="dot"></div><span>🍮 식후 디저트 — 오도리 일대 카페나 파르페 (삿포로는 '시메 파르페' 문화 유명)</span></div>
+      <div class="place"><span class="place-n">📍 파르페 커피 술 사토 (佐藤)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%83%91%E3%83%95%E3%82%A7%E3%80%81%E7%8F%88%E7%90%B2%E3%80%81%E9%85%92%E3%80%81%E4%BD%90%E8%97%A4" target="_blank">🗺️ 맵</a></div>
+      <div class="place-d">🍮 오도리역 36번 출구 30초 · 13시~(주말 새벽1시) · 삿포로 '시메 파르페' 명소 · 소프트아이스크림·파르페+커피·술</div>
+      <div class="item"><div class="dot"></div><span>스프카레로 저녁 → 사토에서 파르페로 마무리 → 오도리 비어가든으로 (전부 오도리 도보권)</span></div>
     </div></div>
   </div>
   <div class="acc" data-d="2" onclick="tog(this)">
@@ -623,6 +633,7 @@
   </div>
   <div class="daymap" id="map3"></div>
   <div class="daymap-cap">🚆 오도리/삿포로역(니조시장·사계마르쉐) → 신치토세공항 JR 쾌속 에어포트 약 37분</div>
+  <a class="dir-btn" href="https://www.google.com/maps/dir/二条市場/札幌駅/新千歳空港" target="_blank">🧭 이 날 경로 구글맵 길찾기 <span class="sub">(니조시장→삿포로역→공항)</span></a>
   <div class="acc" data-d="3" onclick="tog(this)">
     <div class="acc-head"><div class="acc-icon">🛍️</div><div class="acc-meta"><div class="acc-time">오전·점심 · 09:00~13:00</div><div class="acc-name">삿포로 쇼핑 + 마지막 식사</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
@@ -708,11 +719,11 @@
       ], line:[[42.7752,141.6922],[43.0548,141.3540]] },
       1:{ pts:[
         [1,43.0540,141.3548,'토요타 렌터카 스스키노역앞점','11:00 픽업','トヨタレンタカー 地下鉄すすきの駅前店'],
-        [2,43.0610,141.3380,'삿포로 장외시장','점심·해산물','札幌場外市場'],
+        [2,43.0871,141.3245,'키타노구루메테이(장외시장)','점심·카이센동','海鮮市場北のグルメ亭'],
         [3,42.5733,140.8472,'도야호 유람선 선착장','15:00 도착·관광','洞爺湖汽船'],
         [4,42.5439,140.8597,'우스산 로프웨이','선택 관광','有珠山ロープウェイ'],
         [5,42.5667,140.8208,'코노스미카','체크인·온천·불꽃','ザ・レイクスイート湖の栖'],
-      ], line:[[43.0540,141.3548],[43.0610,141.3380],[42.5733,140.8472],[42.5667,140.8208]] },
+      ], line:[[43.0540,141.3548],[43.0871,141.3245],[42.5733,140.8472],[42.5667,140.8208]] },
       2:{ pts:[
         [1,42.5667,140.8208,'코노스미카','조식 후 출발','ザ・レイクスイート湖の栖'],
         [2,43.5481,142.3896,'팜토미타','라벤더·멜론','ファーム富田'],
