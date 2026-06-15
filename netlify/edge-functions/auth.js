@@ -1,19 +1,12 @@
 export default async (request, context) => {
-  const USER = "borihara";
-  const PASS = 3511";
-
-  const auth = request.headers.get("authorization");
-  const expected = "Basic " + btoa(USER + ":" + PASS);
-
-  if (auth === expected) {
+  const ok = btoa("borihara:3511");
+  const got = request.headers.get("authorization") || "";
+  if (got === "Basic " + ok) {
     return context.next();
   }
-
-  return new Response("Authentication required", {
+  return new Response("Auth required", {
     status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="Hokkaido"',
-    },
+    headers: { "WWW-Authenticate": "Basic" },
   });
 };
 
