@@ -165,6 +165,11 @@
   .dir-btn { display:flex; align-items:center; justify-content:center; gap:7px; background:linear-gradient(135deg,#1a73e8,#4285f4); color:#fff; font-weight:700; font-size:13px; text-decoration:none; padding:11px 14px; border-radius:10px; margin-bottom:16px; border:1px solid #5b9cf6; }
   .dir-btn:active { opacity:.85; }
   .dir-btn span.sub { font-size:10px; font-weight:400; opacity:.85; }
+  .dir-mini { display:inline-flex; align-items:center; gap:5px; background:#1a3a6e; color:#9fc4f5; font-weight:700; font-size:11.5px; text-decoration:none; padding:6px 11px; border-radius:7px; margin:6px 0 2px; border:1px solid #2a5a9e; }
+  .dir-mini:active { opacity:.8; }
+  /* 구간별 작은 길찾기 버튼 (일정 안에 삽입) */
+  .leg-dir { display:inline-flex; align-items:center; gap:5px; background:#13325a; border:1px solid #2f5b9e; color:#9cc4f5; font-size:11px; font-weight:700; text-decoration:none; padding:5px 11px; border-radius:7px; margin:6px 0 2px; }
+  .leg-dir:active { opacity:.8; }
   .leaflet-popup-content-wrapper { background:#161b2e; color:#e0e6f5; border-radius:9px; border:1px solid #3a4a7a; }
   .leaflet-popup-tip { background:#161b2e; border:1px solid #3a4a7a; }
   .leaflet-popup-content { margin:10px 12px; font-family:'Noto Sans KR',sans-serif; font-size:12px; line-height:1.5; }
@@ -206,69 +211,9 @@
 <div class="map-section">
   <div class="map-title">🗺️ 3박 4일 이동 경로 한눈에 보기</div>
   <div class="map-wrap">
-    <svg viewBox="0 0 760 600" xmlns="http://www.w3.org/2000/svg" class="route-svg">
-      <!-- 배경 홋카이도 약식 외곽 -->
-      <path d="M120,180 Q90,120 180,100 Q280,80 360,110 Q440,90 520,120 Q620,130 660,210 Q690,290 620,340 Q660,420 580,470 Q500,520 420,490 Q360,540 280,500 Q190,510 160,430 Q100,380 140,300 Q100,240 120,180 Z"
-            fill="#11202e" stroke="#1e3a4e" stroke-width="2"/>
-      <text x="610" y="160" fill="#2a4a5e" font-size="13" font-style="italic">HOKKAIDO</text>
-
-      <!-- 경로 선: DAY1 (공항→삿포로) 초록 - 위쪽 곡선 -->
-      <path d="M540,430 Q470,340 370,300" fill="none" stroke="#4caf7a" stroke-width="3.5" stroke-dasharray="2 6" stroke-linecap="round"/>
-      <!-- DAY2 (삿포로→장외시장→도야호) 분홍 -->
-      <path d="M370,300 L340,330 Q250,400 215,425" fill="none" stroke="#e06ba8" stroke-width="3.5" stroke-linecap="round"/>
-      <!-- DAY3 (도야호→후라노→삿포로) 주황 -->
-      <path d="M215,425 Q360,300 470,200" fill="none" stroke="#ffb347" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M470,200 Q430,260 370,300" fill="none" stroke="#ffb347" stroke-width="3.5" stroke-dasharray="9 5" stroke-linecap="round"/>
-      <!-- DAY4 (삿포로→공항) 회색 - 살짝 아래 곡선으로 분리 -->
-      <path d="M370,300 Q480,390 540,430" fill="none" stroke="#90a4ae" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
-
-      <!-- 구간 소요시간 라벨 -->
-      <g font-size="11" font-weight="700">
-        <rect x="430" y="318" width="70" height="20" rx="5" fill="#1b3a2a"/>
-        <text x="465" y="332" text-anchor="middle" fill="#5bc48e">버스 40분</text>
-
-        <rect x="232" y="372" width="78" height="20" rx="5" fill="#3a1b2e"/>
-        <text x="271" y="386" text-anchor="middle" fill="#e89bc4">차 1h40m</text>
-
-        <rect x="300" y="210" width="78" height="20" rx="5" fill="#3a2e0d"/>
-        <text x="339" y="224" text-anchor="middle" fill="#ffc97a">차 3시간</text>
-
-        <rect x="392" y="250" width="78" height="20" rx="5" fill="#3a2e0d"/>
-        <text x="431" y="264" text-anchor="middle" fill="#ffc97a">차 2시간</text>
-
-        <rect x="455" y="400" width="74" height="20" rx="5" fill="#2a3138"/>
-        <text x="492" y="414" text-anchor="middle" fill="#aab8c2">JR 37분</text>
-      </g>
-
-      <!-- 지점 마커 -->
-      <!-- 삿포로 (허브) -->
-      <circle cx="370" cy="300" r="13" fill="#1a1d2a" stroke="#fff" stroke-width="2.5"/>
-      <circle cx="370" cy="300" r="5" fill="#fff"/>
-      <text x="370" y="285" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">삿포로</text>
-      <text x="370" y="332" text-anchor="middle" fill="#9bb0c4" font-size="10">스트림·로얄파크 / 징기스칸·비어가든</text>
-
-      <!-- 신치토세공항 -->
-      <circle cx="540" cy="430" r="10" fill="#1a1d2a" stroke="#90a4ae" stroke-width="2.5"/>
-      <text x="540" y="455" text-anchor="middle" fill="#cfd8e0" font-size="12" font-weight="700">✈ 신치토세공항</text>
-      <text x="540" y="470" text-anchor="middle" fill="#7a8a98" font-size="9">IN: 일 / OUT: 수</text>
-
-      <!-- 도야호 -->
-      <circle cx="215" cy="425" r="11" fill="#1a1d2a" stroke="#e06ba8" stroke-width="2.5"/>
-      <circle cx="215" cy="425" r="4" fill="#e06ba8"/>
-      <text x="215" y="450" text-anchor="middle" fill="#f0b8d6" font-size="12" font-weight="700">🌋 도야호</text>
-      <text x="215" y="465" text-anchor="middle" fill="#b88aa0" font-size="9">코노스미카 (월 1박)</text>
-
-      <!-- 후라노 -->
-      <circle cx="470" cy="200" r="11" fill="#1a1d2a" stroke="#ffb347" stroke-width="2.5"/>
-      <circle cx="470" cy="200" r="4" fill="#ffb347"/>
-      <text x="470" y="185" text-anchor="middle" fill="#ffce8a" font-size="12" font-weight="700">🌸 후라노</text>
-      <text x="470" y="172" text-anchor="middle" fill="#c4a070" font-size="9">팜토미타·멜론 (화)</text>
-
-      <!-- 장외시장 (작은 경유점) -->
-      <circle cx="340" cy="330" r="5" fill="#e06ba8"/>
-      <text x="318" y="348" text-anchor="end" fill="#b88aa0" font-size="9">장외시장</text>
-    </svg>
+    <div id="overviewmap" style="width:100%; height:380px; border-radius:14px; overflow:hidden; background:#e8e8e8;"></div>
   </div>
+  <div class="ov-loading" id="ovLoading" style="text-align:center; font-size:11px; color:var(--muted); margin-top:8px;">🛣️ 실제 도로 경로를 불러오는 중… (인터넷 연결 필요)</div>
 
   <!-- 범례 -->
   <div class="map-legend">
@@ -341,6 +286,7 @@
         <div class="ag-step"><b>버스</b> — 추오(빨강)/호쿠토(초록) 스스키노行 · 성인 1,300엔 · 신용카드는 초록 호쿠토</div>
         <div class="ag-step"><b>또는 JR+지하철</b> — 신치토세→JR삿포로역→지하철 난보쿠선 "스스키노"역 (약 1시간)</div>
         <div class="ag-note">💡 호텔은 "COCONO 스스키노" 7층, 스스키노역 직결 — 비·눈 안 맞고 진입 가능. 짐 많으면 버스가 편함</div>
+        <a class="dir-mini" href="https://www.google.com/maps/dir/新千歳空港/SAPPORO+STREAM+HOTEL" target="_blank">🧭 공항 → 스트림 호텔 길찾기 (대중교통)</a>
       </div>
     </div></div>
   </div>
@@ -464,12 +410,15 @@
       <div class="place-d"><b>11:30</b> 삿포로 중앙도매시장(장외시장) 내 · 아침 7시부터 영업 · 320석 대형 · 카이센동·게·생선구이</div>
       <div class="item"><div class="dot"></div><span>🦀 추성훈도 다녀간 유명 맛집 · 주차장 완비라 렌트 후 들르기 좋음</span></div>
       <div class="item"><div class="dot"></div><span><b>13:00</b> 점심 후 도야호로 출발</span></div>
+      <a class="leg-dir" href="https://www.google.com/maps/dir/トヨタレンタカー地下鉄すすきの駅前店/海鮮市場北のグルメ亭" target="_blank">🧭 렌트점 → 키타노구루메테이 길찾기</a>
     </div></div>
   </div>
   <div class="acc" data-d="1" onclick="tog(this)">
     <div class="acc-head"><div class="acc-icon">🚙</div><div class="acc-meta"><div class="acc-time">낮 · 13:00 출발 · 도야호로</div><div class="acc-name">삿포로 → 도야호 드라이브</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
       <div class="drive">🚗 장외시장 → 도야호 · 약 1시간 40분 (경유 포함 ~15:00 도착)</div>
+      <a class="dir-mini" href="https://www.google.com/maps/dir/海鮮市場北のグルメ亭/洞爺湖汽船" target="_blank">🧭 키타노구루메테이 → 도야호 길찾기</a>
+      <a class="leg-dir" href="https://www.google.com/maps/dir/海鮮市場北のグルメ亭/洞爺湖汽船" target="_blank">🧭 키타노구루메테이 → 도야호 길찾기</a>
       <div class="place"><span class="place-n">📍 노보리베츠 지옥계곡 (선택 경유)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E7%99%BB%E5%88%A5%E5%9C%B0%E7%8D%84%E8%B0%B7" target="_blank">🗺️ 맵</a></div>
       <div class="place-d">가는 길 경유 · 유황온천 화산 계곡 (30~40분) · 시간 여유 있을 때만</div>
     </div></div>
@@ -541,6 +490,8 @@
     <div class="acc-head"><div class="acc-icon">🚗</div><div class="acc-meta"><div class="acc-time">오전 · 이동 (가장 긴 구간)</div><div class="acc-name">도야호 → 후라노 드라이브</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
       <div class="drive long">🚗 도야호 10:00 출발 → 후라노 ~13:00 도착 · 약 3시간 (200km)</div>
+      <a class="dir-mini" href="https://www.google.com/maps/dir/ザ・レイクスイート湖の栖/ファーム富田" target="_blank">🧭 코노스미카 → 팜토미타 길찾기</a>
+      <a class="leg-dir" href="https://www.google.com/maps/dir/ザ・レイクスイート湖の栖/ファーム富田" target="_blank">🧭 코노스미카 → 팜토미타 길찾기</a>
       <div class="item"><div class="dot"></div><span>중간 휴게소(SA)에서 1회 휴식 권장 · 후라노行 전 주유 체크</span></div>
     </div></div>
   </div>
@@ -560,6 +511,8 @@
     <div class="acc-head"><div class="acc-icon">🚗</div><div class="acc-meta"><div class="acc-time">오후 · 이동</div><div class="acc-name">후라노 → 삿포로 드라이브</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
       <div class="drive long">🚗 후라노 16:00 출발 → 삿포로 ~18:00 도착 · 약 2시간</div>
+      <a class="dir-mini" href="https://www.google.com/maps/dir/ファーム富田/トヨタレンタカー地下鉄すすきの駅前店" target="_blank">🧭 팜토미타 → 렌트반납점 길찾기</a>
+      <a class="leg-dir" href="https://www.google.com/maps/dir/ファーム富田/トヨタレンタカー地下鉄すすきの駅前店" target="_blank">🧭 팜토미타 → 렌트 반납점 길찾기</a>
       <div class="item"><div class="dot"></div><span>⚠️ <b>19:00이 반납 마감 = 영업 종료 시각</b> — 절대 늦으면 안 됨</span></div>
       <div class="item"><div class="dot"></div><span>18:00 도착 → 주유소에서 만땅 주유(15~20분) → 18:30 반납이 이상적</span></div>
       <div class="item"><div class="dot"></div><span>💡 후라노에서 정체·관광 지연 변수 있으니 16:00 출발은 꼭 지킬 것</span></div>
@@ -704,6 +657,85 @@
   }
   function tog(el) { el.classList.toggle('open'); }
 
+  // ===== 전체 개요 지도 (실제 도로 경로) =====
+  (function(){
+    if (typeof L === 'undefined') return;
+    const el = document.getElementById('overviewmap');
+    if (!el) return;
+
+    const COL = ['#4caf7a','#e06ba8','#ffb347','#5b9cf6'];
+
+    // 주요 지점 [위도, 경도, 이름, 색인덱스, 검색어]
+    const spots = [
+      [42.7752,141.6922,'신치토세공항',0,'新千歳空港'],
+      [43.0548,141.3540,'삿포로(스스키노)',1,'すすきの'],
+      [43.0871,141.3245,'키타노구루메테이',1,'海鮮市場北のグルメ亭'],
+      [42.5667,140.8208,'도야호 코노스미카',1,'ザ・レイクスイート湖の栖'],
+      [43.5481,142.3896,'후라노 팜토미타',2,'ファーム富田'],
+      [43.0606,141.3464,'삿포로(오도리)',2,'大通公園'],
+    ];
+
+    // 구간 [출발idx, 도착idx, 색, 라벨] — spots 배열 인덱스 기준
+    // 실제 도로 경로를 그릴 구간들
+    const legs = [
+      {from:[42.7752,141.6922], to:[43.0548,141.3540], col:'#4caf7a', mode:'driving'}, // 공항→삿포로
+      {from:[43.0548,141.3540], to:[43.0871,141.3245], col:'#e06ba8', mode:'driving'}, // 삿포로→장외시장
+      {from:[43.0871,141.3245], to:[42.5667,140.8208], col:'#e06ba8', mode:'driving'}, // 장외시장→도야호
+      {from:[42.5667,140.8208], to:[43.5481,142.3896], col:'#ffb347', mode:'driving'}, // 도야호→후라노
+      {from:[43.5481,142.3896], to:[43.0606,141.3464], col:'#ffb347', mode:'driving'}, // 후라노→삿포로
+      {from:[43.0606,141.3464], to:[42.7752,141.6922], col:'#90a4ae', mode:'driving'}, // 삿포로→공항
+    ];
+
+    const map = L.map(el,{zoomControl:true, scrollWheelZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {attribution:'© OpenStreetMap', maxZoom:19}).addTo(map);
+
+    // 일단 전체 범위 맞춤
+    const allPts = spots.map(s=>[s[0],s[1]]);
+    map.fitBounds(L.latLngBounds(allPts),{padding:[30,30]});
+
+    // 마커
+    function gmap(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);}
+    spots.forEach(function(s){
+      const big = (s[2].indexOf('공항')>=0 || s[2].indexOf('코노스미카')>=0 || s[2].indexOf('팜토미타')>=0 || s[2].indexOf('스스키노')>=0);
+      const ic = L.divIcon({className:'', html:'<div style="background:'+COL[s[3]]+';width:'+(big?16:11)+'px;height:'+(big?16:11)+'px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>', iconSize:[16,16], iconAnchor:[8,8]});
+      L.marker([s[0],s[1]],{icon:ic}).addTo(map)
+        .bindPopup('<div style="font-weight:800;font-size:12px">'+s[2]+'</div><a href="'+gmap(s[4])+'" target="_blank" style="font-size:11px;color:#1a73e8">🗺️ 구글맵</a>');
+    });
+
+    // OSRM으로 실제 도로 경로 받아서 그리기
+    let done = 0;
+    function fallbackLine(leg){
+      L.polyline([leg.from, leg.to], {color:leg.col, weight:3, opacity:.6, dashArray:'6,8'}).addTo(map);
+    }
+    legs.forEach(function(leg){
+      const url = 'https://router.project-osrm.org/route/v1/driving/'
+        + leg.from[1]+','+leg.from[0]+';'+leg.to[1]+','+leg.to[0]
+        + '?overview=full&geometries=geojson';
+      fetch(url).then(function(r){return r.json();}).then(function(data){
+        if(data && data.routes && data.routes[0]){
+          const coords = data.routes[0].geometry.coordinates.map(function(c){return [c[1],c[0]];});
+          L.polyline(coords, {color:leg.col, weight:4, opacity:.85}).addTo(map);
+        } else {
+          fallbackLine(leg);
+        }
+      }).catch(function(){
+        fallbackLine(leg); // 실패 시 직선
+      }).finally(function(){
+        done++;
+        if(done===legs.length){
+          const ld=document.getElementById('ovLoading');
+          if(ld) ld.style.display='none';
+        }
+      });
+    });
+
+    function refresh(){ map.invalidateSize(); map.fitBounds(L.latLngBounds(allPts),{padding:[30,30]}); }
+    setTimeout(refresh,300); setTimeout(refresh,1200); setTimeout(refresh,2600);
+    window.addEventListener('load',refresh);
+    window.addEventListener('resize',function(){map.invalidateSize();});
+  })();
+
   // ===== 일자별 미니맵 =====
   (function(){
     if (typeof L === 'undefined') return; // Leaflet 로드 실패 시 조용히 패스
@@ -745,8 +777,26 @@
       // 표준 OpenStreetMap 타일 (가장 안정적)
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {attribution:'© OpenStreetMap', maxZoom:19}).addTo(m);
-      // 경로선
-      L.polyline(data.line,{color:col,weight:4,opacity:.8}).addTo(m);
+
+      // 경로선 — 우선 직선(점선)으로 그려두고, 실제 도로 경로를 받아오면 교체
+      let fallbackLine = L.polyline(data.line,{color:col,weight:3,opacity:.45,dashArray:'6,8'}).addTo(m);
+
+      // OSRM 무료 라우팅으로 실제 도로 경로 받아오기 (구간별로 이어붙임)
+      // 4일차(JR/공항)는 도로 주행이 아니므로 직선 유지
+      if (d !== '3') {
+        const coordStr = data.line.map(function(c){return c[1]+','+c[0];}).join(';');
+        const url = 'https://router.project-osrm.org/route/v1/driving/'+coordStr+'?overview=full&geometries=geojson';
+        fetch(url).then(function(r){return r.json();}).then(function(j){
+          if(j && j.routes && j.routes[0]){
+            const coords = j.routes[0].geometry.coordinates.map(function(c){return [c[1],c[0]];});
+            m.removeLayer(fallbackLine);
+            // 흰색 외곽선 + 컬러 본선 (가독성)
+            L.polyline(coords,{color:'#ffffff',weight:6,opacity:.6}).addTo(m);
+            L.polyline(coords,{color:col,weight:3.5,opacity:.95}).addTo(m);
+          }
+        }).catch(function(){ /* 실패 시 직선 유지 */ });
+      }
+
       // 마커
       const lls=[];
       data.pts.forEach(function(p){
