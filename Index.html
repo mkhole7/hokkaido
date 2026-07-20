@@ -57,12 +57,8 @@
   .tabs { display:flex; background:#0f1118; border-bottom:1px solid var(--border); overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:100; margin-top:18px; }
   .tabs::-webkit-scrollbar { display:none; }
   .tab[data-d="4"].active { color:#c9a8f5; border-bottom-color:#6b4fa0; }
-  /* 공통 정보 구분 */
-  .common-divider { display:flex; align-items:center; gap:10px; max-width:680px; margin:38px auto 18px; padding:0 16px; }
-  .cd-line { flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); }
-  .cd-label { font-size:11px; color:var(--muted); white-space:nowrap; letter-spacing:.5px; }
-  .cd-label b { color:#8ba3e0; }
-  .common-zone { background:#0c0e15; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:4px 0 10px; }
+  .tab[data-d="5"].active { color:#ffb347; border-bottom-color:#8a6a2a; }
+
   .tab { flex:1 0 80px; padding:14px 8px 12px; border:none; border-bottom:3px solid transparent; background:none; color:var(--muted); cursor:pointer; font-family:'Noto Sans KR',sans-serif; font-weight:700; text-align:center; transition:all .2s; display:flex; flex-direction:column; align-items:center; gap:3px; }
   .tab .te { font-size:20px; }
   .tab .tl { font-size:12px; font-weight:900; letter-spacing:1px; }
@@ -308,6 +304,7 @@
   <button class="tab" data-d="1" onclick="sw(1)"><span class="te">🌋</span><span class="tl">DAY 2</span><span class="td">7/27 월</span></button>
   <button class="tab" data-d="2" onclick="sw(2)"><span class="te">🌸</span><span class="tl">DAY 3</span><span class="td">7/28 화</span></button>
   <button class="tab" data-d="3" onclick="sw(3)"><span class="te">🏠</span><span class="tl">DAY 4</span><span class="td">7/29 수</span></button>
+  <button class="tab" data-d="5" onclick="sw(5)"><span class="te">🚗</span><span class="tl">운전·정보</span><span class="td">주의사항</span></button>
 </div>
 
 <div class="content">
@@ -765,15 +762,13 @@
   </div>
 </div>
 
-</div><!-- /content -->
 
-<div class="common-zone">
-<div class="common-divider">
-  <div class="cd-line"></div>
-  <div class="cd-label">📌 아래부터는 <b>모든 날짜 공통</b> 정보입니다</div>
-  <div class="cd-line"></div>
-</div>
-
+<!-- 운전 · 트래블 인포 -->
+<div class="day-panel" id="p5">
+  <div class="day-header" data-d="3" style="background:linear-gradient(135deg,#3a2a12,#1f1710); border-color:#8a6a2a;">
+    <div class="dh-label">INFO</div>
+    <div class="dh-title">🚗 운전 주의사항 &amp; 트래블 인포</div>
+  </div>
 <div class="warnbox">
   <div class="warnbox-in">
     <div class="warnbox-h">🚗 일본 첫 운전 주의사항</div>
@@ -796,9 +791,11 @@
     <div class="tip"><div class="tip-h">💰 예산 (2인)</div><div class="tip-i">항공 왕복: 60~100만원</div><div class="tip-i">숙박 3박: 180~350만원</div><div class="tip-i">렌트카 2일: 12~22만원</div><div class="tip-i">식비·기타: 40~70만원</div></div>
   </div>
 </div>
+</div>
+
+</div><!-- /content -->
 
 
-</div><!-- /common-zone -->
 
 <div class="footer">
   <div class="warn-foot">✅ 항공·호텔 3박·렌트카 모두 예약 완료! 남은 건 면허증·여권·입국 스탬프 챙기기 🎒</div>
@@ -807,7 +804,7 @@
 <script>
   function sw(n) {
     document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', +t.dataset.d === n));
-    ['p0','p1','p2','p3','p4'].forEach((id,i)=>{var el=document.getElementById(id); if(el) el.classList.toggle('active',i===n);});
+    ['p0','p1','p2','p3','p4','p5'].forEach((id,i)=>{var el=document.getElementById(id); if(el) el.classList.toggle('active',i===n);});
     window.scrollTo({top: document.querySelector('.tabs').offsetTop - 5, behavior:'smooth'});
     setTimeout(function(){ if(window._fixMaps) window._fixMaps(); }, 150);
   }
