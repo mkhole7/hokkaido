@@ -56,6 +56,7 @@
 
   .tabs { display:flex; background:#0f1118; border-bottom:1px solid var(--border); overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:100; margin-top:18px; }
   .tabs::-webkit-scrollbar { display:none; }
+  .tab[data-d="4"].active { color:#c9a8f5; border-bottom-color:#6b4fa0; }
   .tab { flex:1 0 80px; padding:14px 8px 12px; border:none; border-bottom:3px solid transparent; background:none; color:var(--muted); cursor:pointer; font-family:'Noto Sans KR',sans-serif; font-weight:700; text-align:center; transition:all .2s; display:flex; flex-direction:column; align-items:center; gap:3px; }
   .tab .te { font-size:20px; }
   .tab .tl { font-size:12px; font-weight:900; letter-spacing:1px; }
@@ -188,15 +189,12 @@
   .dmp-link { display:inline-block; margin-top:6px; font-size:11px; font-weight:700; color:#5bb4e0; text-decoration:none; border:1px solid #2a6b8e55; padding:2px 8px; border-radius:5px; }
   .num-icon { display:flex; align-items:center; justify-content:center; font-weight:900; font-size:12px; color:#fff; border-radius:50%; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.5); width:26px; height:26px; }
 
-  /* ===== STATIC EXPANDED MODE (JS 없이 전부 펼침) ===== */
-  .tabs { display:none !important; }            /* 탭 바 숨김 */
-  .day-panel { display:block !important; }       /* 모든 날짜 펼침 */
-  .acc-body { max-height:none !important; overflow:visible !important; border-top:1px solid var(--border) !important; }  /* 아코디언 전부 펼침 */
+  /* ===== 탭 전환 모드 (아코디언은 항상 펼침) ===== */
+  .acc-body { max-height:none !important; overflow:visible !important; border-top:1px solid var(--border) !important; }
   .acc.open .acc-body { max-height:none !important; }
-  .acc-arrow { display:none !important; }         /* 펼침 화살표 숨김 (이미 다 열려 있으니 불필요) */
+  .acc-arrow { display:none !important; }
   .acc-head { cursor:default !important; }
-  .day-panel { margin-bottom:36px; }             /* 날짜 사이 간격 */
-  .day-panel + .day-panel { border-top:2px dashed var(--border); padding-top:8px; }
+  .tabs { position:sticky; top:0; z-index:500; }
 </style>
 </head>
 <body>
@@ -204,7 +202,7 @@
 <div class="hero">
   <div class="hero-badge">Toya → Furano Course</div>
   <h1>홋카이도<br>3박 4일</h1>
-  <div class="hero-sub">2026.07.26(토)–29(화) · 도야호 코노스미카 1박 코스</div>
+  <div class="hero-sub">2026.07.26(일)–29(수) · 도야호 코노스미카 1박 코스</div>
   <div class="hero-tags">
     <span class="hero-tag">🍺 삿포로 징기스칸</span>
     <span class="hero-tag">🐧 AOAO 수족관</span>
@@ -271,7 +269,7 @@
     <div class="tl-title">🕐 전체 이동 타임라인 (집→집, 확정 항공편 기준)</div>
     <div class="tl-sub">✈️ 가는편 <b>LJ311 김해 14:05 → 삿포로 16:25</b> · 오는편 <b>LJ312 삿포로 17:25 → 김해 19:50</b> (예약 LJ-KJ753T, 수하물 15kg). <span class="tl-warn">아래 시각은 이 항공편 기준 권장값 — 리무진 실제 시간표·교통상황 보고 조정하세요.</span></div>
 
-    <div class="tl-day">🛫 가는 날 (7/26 토) — LJ311 14:05 출발</div>
+    <div class="tl-day">🛫 가는 날 (7/26 일) — LJ311 14:05 출발</div>
     <div class="tl-row"><span class="tl-clock">전날</span><span class="tl-act">면허증·여권·입국스탬프 준비물 점검 (리무진 예매 완료 ✓)</span></div>
     <div class="tl-row"><span class="tl-clock">08:45</span><span class="tl-act">대구 집 출발 → 동대구복합환승센터 <span class="tl-dur">(약 30~40분)</span></span></div>
     <div class="tl-row"><span class="tl-clock">09:40</span><span class="tl-act">✅ 동대구 <b>3층 4홈</b> → 김해공항 리무진 (좌석 13·14, 진안고속) <span class="tl-dur">(소요 1:20)</span></span></div>
@@ -284,7 +282,7 @@
     <div class="tl-row"><span class="tl-clock">19:00~</span><span class="tl-act">🔥 다루마 징기스칸 + 삿포로 클래식 (저녁) → AOAO → 사계마르쉐</span></div>
     <div class="tl-note">💡 16:25 도착이라 첫날 저녁 일정은 <b>19시 이후 시작</b>이 현실적. 징기스칸 오픈런 대신 19~20시 방문, AOAO(22시까지)·사계마르쉐(24시까지)는 밤 늦게도 OK.</div>
 
-    <div class="tl-day">🛬 오는 날 (7/29 화) — LJ312 17:25 출발</div>
+    <div class="tl-day">🛬 오는 날 (7/29 수) — LJ312 17:25 출발</div>
     <div class="tl-row"><span class="tl-clock">08:00~09:00</span><span class="tl-act">니조시장 아침 카이센동 (호텔 조식 불포함) → 체크아웃</span></div>
     <div class="tl-row"><span class="tl-clock">~13:00</span><span class="tl-act">삿포로역 사계마르쉐 최종 선물 쇼핑 · 점심</span></div>
     <div class="tl-row"><span class="tl-clock">13:45</span><span class="tl-act">삿포로역에서 JR 쾌속 에어포트 탑승 <span class="tl-dur">(약 37분, 1,150엔)</span></span></div>
@@ -299,10 +297,11 @@
 </div>
 
 <div class="tabs">
-  <button class="tab active" data-d="0" onclick="sw(0)"><span class="te">🍺</span><span class="tl">DAY 1</span><span class="td">7/26 토</span></button>
-  <button class="tab" data-d="1" onclick="sw(1)"><span class="te">🌋</span><span class="tl">DAY 2</span><span class="td">7/27 일</span></button>
-  <button class="tab" data-d="2" onclick="sw(2)"><span class="te">🌸</span><span class="tl">DAY 3</span><span class="td">7/28 월</span></button>
-  <button class="tab" data-d="3" onclick="sw(3)"><span class="te">🏠</span><span class="tl">DAY 4</span><span class="td">7/29 화</span></button>
+  <button class="tab active" data-d="0" onclick="sw(0)"><span class="te">🍺</span><span class="tl">DAY 1</span><span class="td">7/26 일</span></button>
+  <button class="tab" data-d="1" onclick="sw(1)"><span class="te">🌋</span><span class="tl">DAY 2</span><span class="td">7/27 월</span></button>
+  <button class="tab" data-d="2" onclick="sw(2)"><span class="te">🌸</span><span class="tl">DAY 3</span><span class="td">7/28 화</span></button>
+  <button class="tab" data-d="3" onclick="sw(3)"><span class="te">🏠</span><span class="tl">DAY 4</span><span class="td">7/29 수</span></button>
+  <button class="tab" data-d="4" onclick="sw(4)"><span class="te">🎒</span><span class="tl">준비물</span><span class="td">체크리스트</span></button>
 </div>
 
 <div class="content">
@@ -310,7 +309,7 @@
 <!-- DAY 1 -->
 <div class="day-panel active" id="p0">
   <div class="day-header" data-d="0">
-    <div class="dh-label">7월 26일 (토)</div>
+    <div class="dh-label">7월 26일 (일)</div>
     <div class="dh-title">🍺 삿포로 도착 + 첫 징기스칸 & 생맥주</div>
   </div>
   <div class="daymap" id="map0"></div>
@@ -376,8 +375,8 @@
       <div class="booking-box" style="margin:8px 0;">
         <div class="bk-title">🏨 호텔 예약 확정 정보</div>
         <div class="bk-row"><span class="bk-k">예약번호</span><span class="bk-v">1400826728759682</span></div>
-        <div class="bk-row"><span class="bk-k">체크인</span><span class="bk-v">7/26 (토)</span></div>
-        <div class="bk-row"><span class="bk-k">체크아웃</span><span class="bk-v">7/27 (일)</span></div>
+        <div class="bk-row"><span class="bk-k">체크인</span><span class="bk-v">7/26 (일)</span></div>
+        <div class="bk-row"><span class="bk-k">체크아웃</span><span class="bk-v">7/27 (월)</span></div>
         <div class="bk-row"><span class="bk-k">정원</span><span class="bk-v">성인 2명 (전 객실 금연)</span></div>
         <div class="bk-row"><span class="bk-k">TEL</span><span class="bk-v">+81-11-206-1099</span></div>
         <div class="bk-note">⚠️ 숙박세 별도 — 체크인 시 프런트 결제 (1인 1박, 2만엔 미만 300엔 / 2~5만엔 400엔). 2026.4.1 신설</div>
@@ -392,7 +391,7 @@
 <!-- DAY 2 -->
 <div class="day-panel" id="p1">
   <div class="day-header" data-d="1">
-    <div class="dh-label">7월 27일 (일)</div>
+    <div class="dh-label">7월 27일 (월)</div>
     <div class="dh-title">🌋 삿포로 오전 → 오후 도야호 출발 · 코노스미카</div>
   </div>
   <div class="daymap" id="map1"></div>
@@ -411,8 +410,8 @@
     <div class="bk-row"><span class="bk-k">업체</span><span class="bk-v">토요타 렌터카 · 지하철 스스키노역앞점</span></div>
     <div class="bk-row"><span class="bk-k">예약번호</span><span class="bk-v">99982536000</span></div>
     <div class="bk-row"><span class="bk-k">차량</span><span class="bk-v">코롤라 투어링 하이브리드 (C3, AT)</span></div>
-    <div class="bk-row"><span class="bk-k">픽업</span><span class="bk-v">7/27 (일) 11:00</span></div>
-    <div class="bk-row"><span class="bk-k">반납</span><span class="bk-v">7/28 (월) 19:00</span></div>
+    <div class="bk-row"><span class="bk-k">픽업</span><span class="bk-v">7/27 (월) 11:00</span></div>
+    <div class="bk-row"><span class="bk-k">반납</span><span class="bk-v">7/28 (화) 19:00</span></div>
     <div class="bk-row"><span class="bk-k">보험</span><span class="bk-v">풀패키지 포함 (면책+NOC 보상)</span></div>
     <div class="bk-row"><span class="bk-k">결제</span><span class="bk-v">웹 결제 완료 · 총 20,729엔</span></div>
     <div class="bk-row"><span class="bk-k">주소</span><span class="bk-v">札幌市中央区南5条西2丁目2 サイバーシティビル1F</span><a class="mb" style="background:#7c520026;border-color:#ffb34755;color:#ffb347;margin-left:auto;" href="https://www.google.com/maps/search/?api=1&query=%E3%83%88%E3%83%A8%E3%82%BF%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC%20%E5%9C%B0%E4%B8%8B%E9%89%84%E3%81%99%E3%81%99%E3%81%8D%E3%81%AE%E9%A7%85%E5%89%8D%E5%BA%97" target="_blank">🗺️</a></div>
@@ -470,10 +469,20 @@
     <div class="acc-head"><div class="acc-icon">🚢</div><div class="acc-meta"><div class="acc-time">오후 · 15:00~16:00 · 확정 일정</div><div class="acc-name">도야호 유람선 (나카지마 순회)</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
       <div class="place"><span class="place-n">📍 도야호 유람선 (洞爺湖汽船)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E6%B4%9E%E7%88%BA%E6%B9%96%E6%B1%BD%E8%88%B9" target="_blank">🗺️ 맵</a></div>
-      <div class="place-d">여름철 8:00~16:30 · 30분 간격 출항 · 성인 1,420엔 / 어린이 710엔 · 선착장 주차 무료</div>
-      <div class="item"><div class="dot"></div><span><b>15:00 or 15:30 배</b> 탑승 — 나카지마 순회 약 50분</span></div>
-      <div class="item"><div class="dot"></div><span>호수 한가운데서 우스산·쇼와신산·요테이산 조망 · 체크인 전 마무리 딱</span></div>
-      <div class="item"><div class="dot"></div><span>💡 오시마 하선 코스(+30분, 총 80분)도 있으나 체크인 시간 고려하면 순회만 추천</span></div>
+      <div class="place-d">洞爺湖町洞爺湖温泉29 · 에키마에 산바시(駅前桟橋) — 호텔 그랜드 토야 뒤편 · <b>무료 주차장(대형차 가능)</b></div>
+      <div class="booking-box" style="margin:8px 0;">
+        <div class="bk-title">🚢 7/27(월) 운항 정보 — 여름 시즌 (4월 하순~10/31)</div>
+        <div class="bk-row"><span class="bk-k">운항시간</span><span class="bk-v">08:30~16:30 · <b>30분 간격</b> 출항</span></div>
+        <div class="bk-row"><span class="bk-k">우리 배</span><span class="bk-v" style="color:#5bc48e;">15:00 or 15:30 승선 권장</span></div>
+        <div class="bk-row"><span class="bk-k">소요</span><span class="bk-v">하선 안 함 <b>약 50분</b> / 나카지마 하선 시 약 80분</span></div>
+        <div class="bk-row"><span class="bk-k">요금</span><span class="bk-v">성인 <b>1,420엔</b> / 초등생 710엔</span></div>
+        <div class="bk-row"><span class="bk-k">선박</span><span class="bk-v">중세 고성 컨셉 '에스포아르'(401톤, 정원 700명) · 2층 카페·기프트샵</span></div>
+        <div class="bk-note">⏱️ 15:00 배 → 15:50 하선 → 코노스미카 체크인 16:30 여유. <b>16:30이 막차</b>이니 늦지 않게. 일몰에 따라 최종편이 변경될 수 있어 당일 현장 확인 권장.</div>
+      </div>
+      <div class="item"><div class="dot"></div><span>호수 한가운데서 우스산·쇼와신산·요테이산(에조후지) 파노라마 조망</span></div>
+      <div class="item"><div class="dot"></div><span>🏝 나카지마(오시마) 하선 코스 — 내리면 <b>30분 후 배</b>로 재승선. 호수의 숲 박물관·카페 산책. 단 체크인 시간 고려하면 <b>순회만 추천</b></span></div>
+      <div class="item"><div class="dot"></div><span>🎆 <b>참고: 불꽃 감상선(花火鑑賞船)도 별도 운항</b> — 성인 1,600엔 · 본사 앞 선착장(에키마에와 다름) · 이동하는 발사 지점을 배가 따라가 정면에서 관람. 단 <b>우리는 코노스미카 객실 테라스에서 볼 예정</b>이라 불필요</span></div>
+      <div class="item"><div class="dot"></div><span>💧 호수 위는 바람이 차가움 — <b>얇은 겉옷 필수</b> · 갑판에서 사진 찍기 좋음</span></div>
     </div></div>
   </div>
   <div class="acc open" data-d="1" onclick="tog(this)">
@@ -497,7 +506,7 @@
 <!-- DAY 3 -->
 <div class="day-panel" id="p2">
   <div class="day-header" data-d="2">
-    <div class="dh-label">7월 28일 (월)</div>
+    <div class="dh-label">7월 28일 (화)</div>
     <div class="dh-title">🌸 도야호 → 후라노 → 삿포로 복귀·반납</div>
   </div>
   <div class="daymap" id="map2"></div>
@@ -528,21 +537,22 @@
     </div></div>
   </div>
   <div class="acc" data-d="2" onclick="tog(this)">
-    <div class="acc-head"><div class="acc-icon">🍜</div><div class="acc-meta"><div class="acc-time">점심 · 11:30~12:30 · 나카후라노</div><div class="acc-name">호시노키 라멘 (ほしの希)</div></div><div class="acc-arrow">▾</div></div>
+    <div class="acc-head"><div class="acc-icon">🌸</div><div class="acc-meta"><div class="acc-time">낮 · 11:30~14:00 · 후라노</div><div class="acc-name">팜토미타 + 멜론 (필수 집중)</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
-      <div class="place"><span class="place-n">📍 호시노키 (ほしの希)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%81%BB%E3%81%97%E3%81%AE%E5%B8%8C%20%E4%B8%AD%E5%AF%8C%E8%89%AF%E9%87%8E" target="_blank">🗺️ 맵</a></div>
-      <div class="place-d">나카후라노 국도 237호선 변 통나무집 라멘 · 팜토미타 가는 길목이라 동선 완벽 · 추천: 시오라멘·카라미소라멘</div>
-      <div class="item"><div class="dot"></div><span><b>11:30~12:30</b> 점심 — 오픈 직후라 웨이팅 부담 적음</span></div>
+      <div class="place"><span class="place-n">📍 팜토미타 (Farm Tomita)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E5%AF%8C%E7%94%B0" target="_blank">🗺️ 맵</a></div>
+      <div class="place-d"><b>11:30</b> 라벤더 절정! · 입장 무료 · 🍦 라벤더 소프트아이스크림 필수</div>
+      <div class="place"><span class="place-n">📍 토미타 멜론하우스</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%81%BF%E3%81%9F%E3%83%A1%E3%83%AD%E3%83%B3%E3%83%8F%E3%82%A6%E3%82%B9" target="_blank">🗺️ 맵</a></div>
+      <div class="place-d"><b>13:30</b> 팜토미타 바로 옆 · 후라노 멜론 반 갈라 먹기 🍈</div>
+      <div class="item"><div class="dot"></div><span>⏱️ 비에이는 생략, 팜토미타+멜론 집중 · <b>16:00</b> 삿포로로 출발 (반납 시간 엄수)</span></div>
     </div></div>
   </div>
   <div class="acc" data-d="2" onclick="tog(this)">
-    <div class="acc-head"><div class="acc-icon">🌸</div><div class="acc-meta"><div class="acc-time">오후 · 12:30~16:00 · 후라노</div><div class="acc-name">팜토미타 + 멜론 (필수 집중)</div></div><div class="acc-arrow">▾</div></div>
+    <div class="acc-head"><div class="acc-icon">🍜</div><div class="acc-meta"><div class="acc-time">늦은 점심 · 14:00~15:00 · 선택</div><div class="acc-name">호시노키 라멘 (ほしの希) — 배고프면!</div></div><div class="acc-arrow">▾</div></div>
     <div class="acc-body"><div class="acc-inner">
-      <div class="place"><span class="place-n">📍 팜토미타 (Farm Tomita)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E5%AF%8C%E7%94%B0" target="_blank">🗺️ 맵</a></div>
-      <div class="place-d"><b>12:30</b> 라벤더 절정! · 입장 무료 · 🍦 라벤더 소프트아이스크림 필수</div>
-      <div class="place"><span class="place-n">📍 토미타 멜론하우스</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%81%BF%E3%81%9F%E3%83%A1%E3%83%AD%E3%83%B3%E3%83%8F%E3%82%A6%E3%82%B9" target="_blank">🗺️ 맵</a></div>
-      <div class="place-d"><b>14:30</b> 팜토미타 바로 옆 · 후라노 멜론 반 갈라 먹기 🍈</div>
-      <div class="item"><div class="dot"></div><span>⏱️ 비에이는 생략, 팜토미타+멜론 집중 · <b>16:00</b> 삿포로로 출발 (반납 시간 엄수)</span></div>
+      <div class="place"><span class="place-n">📍 호시노키 (ほしの希)</span><a class="mb" href="https://www.google.com/maps/search/?api=1&query=%E3%81%BB%E3%81%97%E3%81%AE%E5%B8%8C%20%E4%B8%AD%E5%AF%8C%E8%89%AF%E9%87%8E" target="_blank">🗺️ 맵</a></div>
+      <div class="place-d">나카후라노 국도 237호선 변 통나무집 라멘 · 팜토미타 바로 근처 · 추천: 시오라멘·카라미소라멘</div>
+      <div class="item"><div class="dot"></div><span><b>14:00~15:00</b> 팜토미타·멜론 후 늦은 점심</span></div>
+      <div class="item"><div class="dot"></div><span>💡 아이스크림·멜론으로 배가 안 고프면 <b>과감히 생략 OK</b> — 저녁 스프카레를 든든히</span></div>
     </div></div>
   </div>
   <div class="acc" data-d="2" onclick="tog(this)">
@@ -611,7 +621,7 @@
   <div class="route-box" data-d="2">
     <div class="route-label">📍 3일차 드라이브 루트 (총 운전 ~5시간)</div>
     <div class="route-stop"><div class="r-line"><div class="r-dot"></div><div class="r-conn"></div></div><div><div class="r-place">도야호 (코노스미카)</div><div class="r-desc">조식 후 08:30 출발</div></div></div>
-    <div class="route-stop"><div class="r-line"><div class="r-dot"></div><div class="r-conn"></div></div><div><div class="r-place">후라노</div><div class="r-desc">11:30 도착 · 호시노키 라멘 → 팜토미타·멜론 → 16:00 출발</div></div></div>
+    <div class="route-stop"><div class="r-line"><div class="r-dot"></div><div class="r-conn"></div></div><div><div class="r-place">후라노</div><div class="r-desc">11:30 도착 · 팜토미타·멜론 → 호시노키 라멘(선택) → 16:00 출발</div></div></div>
     <div class="route-stop"><div class="r-line"><div class="r-dot"></div></div><div><div class="r-place">삿포로</div><div class="r-desc">18:00 도착 · 19시 렌트 반납 · 오도리 체크인 · 스프카레 · 비어가든 🍺</div></div></div>
   </div>
 </div>
@@ -619,7 +629,7 @@
 <!-- DAY 4 -->
 <div class="day-panel" id="p3">
   <div class="day-header" data-d="3">
-    <div class="dh-label">7월 29일 (화)</div>
+    <div class="dh-label">7월 29일 (수)</div>
     <div class="dh-title">🏠 마지막 쇼핑 → 귀국</div>
   </div>
   <div class="daymap" id="map3"></div>
@@ -684,6 +694,97 @@
   </div>
 </div>
 
+
+<!-- 준비물 · 체크리스트 -->
+<div class="day-panel" id="p4">
+  <div class="day-header" data-d="3" style="background:linear-gradient(135deg,#2a1a3e,#1a1426); border-color:#6b4fa0;">
+    <div class="dh-label">CHECKLIST</div>
+    <div class="dh-title">🎒 준비물 · 꼭 확인할 것</div>
+  </div>
+
+  <div class="booking-box" style="border-color:#c0392b88;">
+    <div class="bk-title" style="color:#ff8c7a;">🚨 이것만은 절대 잊지 말 것 (TOP 5)</div>
+    <div class="bk-row"><span class="bk-k">1</span><span class="bk-v"><b>국제운전면허증 + 한국 운전면허증</b> — 2명분 원본 (하나라도 없으면 렌트 불가)</span></div>
+    <div class="bk-row"><span class="bk-k">2</span><span class="bk-v"><b>여권 입국 스탬프</b> — 자동게이트 이용 시 직원에게 요청! 없으면 렌트 불가</span></div>
+    <div class="bk-row"><span class="bk-k">3</span><span class="bk-v"><b>여권</b> — 코노스미카 체크인 시 제시 필수 (외국인 숙박 등록)</span></div>
+    <div class="bk-row"><span class="bk-k">4</span><span class="bk-v"><b>신용카드</b> — 코노스미카는 현금 불가 (Visa/JCB)</span></div>
+    <div class="bk-row"><span class="bk-k">5</span><span class="bk-v"><b>CarPlay/안드로이드오토 USB 케이블</b> — 한국어 구글맵 내비용</span></div>
+  </div>
+
+  <div class="acc" data-d="3">
+    <div class="acc-head"><div class="acc-icon">📄</div><div class="acc-meta"><div class="acc-time">서류 · 결제</div><div class="acc-name">필수 서류 &amp; 돈</div></div></div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="item"><div class="dot"></div><span>여권 (유효기간 6개월 이상 확인) × 2</span></div>
+      <div class="item"><div class="dot"></div><span>국제운전면허증(제네바식 책자형) + 국내면허증 × 2 — <b>사본 아닌 원본</b></span></div>
+      <div class="item"><div class="dot"></div><span>항공 예약번호 <b>LJ-KJ753T</b> · 렌트 <b>99982536000</b> · 스트림호텔 <b>1400826728759682</b></span></div>
+      <div class="item"><div class="dot"></div><span>공항버스 QR 승차권 (가는 편 7/26 09:40 / 오는 편 7/29 21:40, 좌석 13·14)</span></div>
+      <div class="item"><div class="dot"></div><span>해외결제 신용카드 (JCB 있으면 유리) + 엔화 현금 (숙박세·주차·소액 결제용)</span></div>
+      <div class="item"><div class="dot"></div><span>여행자보험 증서 (선택)</span></div>
+    </div></div>
+  </div>
+
+  <div class="acc" data-d="3">
+    <div class="acc-head"><div class="acc-icon">🔌</div><div class="acc-meta"><div class="acc-time">전자 · 통신</div><div class="acc-name">기기 &amp; 데이터</div></div></div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="item"><div class="dot"></div><span>일본 데이터 — 로밍 or e-SIM (구글맵 내비에 필수)</span></div>
+      <div class="item"><div class="dot"></div><span><b>USB 케이블</b> (데이터 전송 가능한 것) — 차량 CarPlay 연결용</span></div>
+      <div class="item"><div class="dot"></div><span>보조배터리 (기내 수하물에만! 위탁 불가) · 멀티탭</span></div>
+      <div class="item"><div class="dot"></div><span>일본 콘센트는 <b>110V A타입</b> — 한국 220V 기기는 변압기 필요할 수 있음 (요즘 충전기는 대부분 프리볼트)</span></div>
+      <div class="item"><div class="dot"></div><span>차량 거치대 (있으면 편함) · 카메라</span></div>
+    </div></div>
+  </div>
+
+  <div class="acc" data-d="3">
+    <div class="acc-head"><div class="acc-icon">👕</div><div class="acc-meta"><div class="acc-time">7월 홋카이도</div><div class="acc-name">옷차림 &amp; 짐 (수하물 15kg)</div></div></div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="item"><div class="dot"></div><span>낮 25℃ 안팎 / 아침·밤 15~18℃ — <b>얇은 겉옷·가디건 필수</b></span></div>
+      <div class="item"><div class="dot"></div><span>도야호 유람선 갑판·비어가든 야외는 특히 서늘함</span></div>
+      <div class="item"><div class="dot"></div><span>편한 운동화 (팜토미타·시장 많이 걸음) · 모자·선글라스 (라벤더밭 햇볕 강함)</span></div>
+      <div class="item"><div class="dot"></div><span>우산/우비 (7월 홋카이도는 비 예보 잦음)</span></div>
+      <div class="item"><div class="dot"></div><span>선크림 · 상비약(두통·소화·밴드) · 세면도구</span></div>
+      <div class="item"><div class="dot"></div><span>⚖️ <b>수하물 15kg</b> — 선물 담을 여유 공간 남기기 (사계마르쉐 쇼핑!)</span></div>
+      <div class="item"><div class="dot"></div><span>코노스미카는 유카타·어메니티 제공 — 잠옷 불필요</span></div>
+    </div></div>
+  </div>
+
+  <div class="acc" data-d="3">
+    <div class="acc-head"><div class="acc-icon">🚗</div><div class="acc-meta"><div class="acc-time">현지에서</div><div class="acc-name">렌트 · 운전 체크포인트</div></div></div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="item"><div class="dot"></div><span>픽업 시 <b>운전자 2명 등록</b> 요청 (무료) — "運転者を2名登録したいです"</span></div>
+      <div class="item"><div class="dot"></div><span>🚦 <b>좌측통행</b> · 우회전 시 반대차선 가로지름 · 교차로에서 특히 주의</span></div>
+      <div class="item"><div class="dot"></div><span>일시정지(止まれ) 표지에서 <b>완전 정차</b> 필수 · 단속 많음</span></div>
+      <div class="item"><div class="dot"></div><span>⛽ 반납 전 <b>만땅 주유</b> (Full 조건) · 외곽은 주유소 드무니 미리</span></div>
+      <div class="item"><div class="dot"></div><span>⏰ <b>7/28 19:00 반납 마감 = 영업 종료</b> — 후라노 16:00 출발 엄수</span></div>
+      <div class="item"><div class="dot"></div><span>🍺 운전일(7/27~28 낮)은 절대 금주 · 일본은 음주운전 처벌 매우 엄격</span></div>
+    </div></div>
+  </div>
+
+  <div class="acc" data-d="3">
+    <div class="acc-head"><div class="acc-icon">💴</div><div class="acc-meta"><div class="acc-time">예상 현지 비용</div><div class="acc-name">엔화 준비 참고</div></div></div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="item"><div class="dot"></div><span>공항버스 왕복 1,300엔 × 2인 = 약 2,600엔</span></div>
+      <div class="item"><div class="dot"></div><span>도야호 유람선 1,420엔 × 2 = 2,840엔</span></div>
+      <div class="item"><div class="dot"></div><span>AOAO 수족관 2,200엔 × 2 = 4,400엔</span></div>
+      <div class="item"><div class="dot"></div><span>숙박세 — 스트림 300~400엔/인 + 로얄파크 300~400엔/인 (체크인 시 현장 결제)</span></div>
+      <div class="item"><div class="dot"></div><span>JR 쾌속 에어포트 1,150엔 × 2 = 2,300엔</span></div>
+      <div class="item"><div class="dot"></div><span>주유비 약 4,000~6,000엔 · 식비·선물은 별도</span></div>
+      <div class="item"><div class="dot"></div><span>💡 카드 결제 대부분 가능하나, <b>시장·소규모 식당은 현금</b>인 곳 있음</span></div>
+    </div></div>
+  </div>
+
+  <div class="acc" data-d="3">
+    <div class="acc-head"><div class="acc-icon">⏰</div><div class="acc-meta"><div class="acc-time">놓치면 큰일</div><div class="acc-name">시간 데드라인 총정리</div></div></div>
+    <div class="acc-body"><div class="acc-inner">
+      <div class="item"><div class="dot"></div><span><b>7/26 09:40</b> 동대구 리무진 (3층 4홈) — 놓치면 항공편 위험</span></div>
+      <div class="item"><div class="dot"></div><span><b>7/27 11:00</b> 렌트 픽업 · <b>19:00 전</b> 코노스미카 체크인 (가이세키 석식 조건)</span></div>
+      <div class="item"><div class="dot"></div><span><b>7/27 16:30</b> 유람선 막차</span></div>
+      <div class="item"><div class="dot"></div><span><b>7/28 19:00</b> 렌트 반납 마감 (영업 종료 시각!)</span></div>
+      <div class="item"><div class="dot"></div><span><b>7/28 21:00</b> 오도리 비어가든 종료</span></div>
+      <div class="item"><div class="dot"></div><span><b>7/29 13:45</b> 삿포로역 JR 탑승 · <b>21:40</b> 김해 리무진</span></div>
+    </div></div>
+  </div>
+</div>
+
 <div class="footer">
   <div class="verdict">
     <b>💡 이 코스의 핵심:</b> 도야호 <b style="color:#e06ba8">코노스미카</b>에서의 하룻밤이 여행의 하이라이트입니다. 객실 노천탕과 불꽃놀이 조망으로 최고의 료칸 경험을 누리고, 마지막 날(4일차)엔 차 없이 삿포로에서 여유롭게 마무리할 수 있어요.<br><br>
@@ -695,8 +796,9 @@
 <script>
   function sw(n) {
     document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===n));
-    ['p0','p1','p2','p3'].forEach((id,i)=>document.getElementById(id).classList.toggle('active',i===n));
+    ['p0','p1','p2','p3','p4'].forEach((id,i)=>{var el=document.getElementById(id); if(el) el.classList.toggle('active',i===n);});
     window.scrollTo({top: document.querySelector('.tabs').offsetTop - 5, behavior:'smooth'});
+    setTimeout(function(){ if(window._fixMaps) window._fixMaps(); }, 150);
   }
   function tog(el) { el.classList.toggle('open'); }
 
@@ -859,6 +961,7 @@
         o.m.fitBounds(o.bounds,{padding:[35,35],maxZoom:13});
       });
     }
+    window._fixMaps = refreshAll;
     setTimeout(refreshAll, 300);
     setTimeout(refreshAll, 1000);
     setTimeout(refreshAll, 2500);
