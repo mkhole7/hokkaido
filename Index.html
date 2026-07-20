@@ -239,6 +239,18 @@
   .rest-n { font-size:12px; font-weight:700; color:#e8eef8; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
   .rest-tag { font-size:9px; padding:1px 6px; border-radius:4px; background:#2a3550; color:#9fb4e0; font-weight:600; }
   .rest-d { font-size:11px; color:#8a96b8; line-height:1.5; margin-top:3px; }
+  .day-sum { border-radius:12px; padding:15px 16px; margin-top:20px; border:1px solid; }
+  [data-d="0"] .day-sum { background:linear-gradient(135deg,#1b6b3a1a,#1b6b3a06); border-color:#1b6b3a55; }
+  [data-d="1"] .day-sum { background:linear-gradient(135deg,#7c2f5a1a,#7c2f5a06); border-color:#7c2f5a55; }
+  [data-d="2"] .day-sum { background:linear-gradient(135deg,#7c52001a,#7c520006); border-color:#7c520055; }
+  [data-d="3"] .day-sum { background:linear-gradient(135deg,#37474f2a,#37474f0a); border-color:#37474f66; }
+  .ds-title { font-size:12px; font-weight:800; margin-bottom:9px; }
+  [data-d="0"] .ds-title{color:var(--d0a)} [data-d="1"] .ds-title{color:var(--d1a)}
+  [data-d="2"] .ds-title{color:var(--d2a)} [data-d="3"] .ds-title{color:var(--d3a)}
+  .ds-body { font-size:12.5px; line-height:1.75; color:#c8d0e0; }
+  .ds-body b { color:#fff; }
+  .ds-key { display:flex; gap:8px; font-size:11.5px; line-height:1.6; padding:5px 0; border-top:1px solid #ffffff0d; margin-top:9px; padding-top:9px; color:#a8b4c8; }
+  .ds-key span:first-child { flex-shrink:0; }
 
   /* ===== 탭 전환 모드 (아코디언은 항상 펼침) ===== */
   .acc-body { max-height:none !important; overflow:visible !important; border-top:1px solid var(--border) !important; }
@@ -320,7 +332,7 @@
   <div class="sec-head">① 오늘의 체크사항</div>
   <div class="check-box">
     <div class="ck-row warn"><span class="ck-ic">🛂</span><div><b>입국 스탬프 반드시 받기</b> — 자동게이트 이용 시 직원에게 요청. 없으면 내일 렌트카 대여 불가</div></div>
-    <div class="ck-row"><span class="ck-ic">🧳</span><div><b>수하물 15kg</b> — 선물 담을 여유 공간 남기기 (마지막 날 쇼핑)</div></div>
+    <div class="ck-row"><span class="ck-ic">🧳</span><div><b>수하물 15kg</b> (가는 편, 각자) — 선물 담을 여유 공간 남기기 · 오는 편은 본인 20kg으로 증량 완료</div></div>
     <div class="ck-row"><span class="ck-ic">🎫</span><div><b>리무진 QR 승차권</b> — 티머니GO 앱에 저장 (동대구 3층 4홈, 좌석 13·14)</div></div>
     <div class="ck-row"><span class="ck-ic">💴</span><div><b>엔화 소액 준비</b> — 공항버스 1,300엔/인 · 숙박세 현장 결제 (300~400엔/인)</div></div>
     <div class="ck-row"><span class="ck-ic">🧥</span><div><b>얇은 겉옷</b> — 삿포로 밤 15~18℃, 낮과 일교차 큼</div></div>
@@ -358,7 +370,7 @@
     <div class="ts-time">11:00</div>
     <div class="ts-body"><b>✈️ 김해공항 국제선 도착</b>
       <div class="ts-detail">
-        <div class="td-row"><span class="td-k">체크인</span><span>진에어 카운터 · 수하물 위탁 (15kg/인)</span></div>
+        <div class="td-row"><span class="td-k">체크인</span><span>진에어 카운터 · 수하물 위탁 (각 15kg)</span></div>
         <div class="td-row"><span class="td-k">예약</span><span>LJ-KJ753T · CHO/MANKEE</span></div>
         <div class="td-row"><span class="td-k">여유</span><span>출발 3시간 전 — 점심 먹고 면세 쇼핑 가능</span></div>
         <div class="td-row"><span class="td-k">주의</span><span style="color:#ffb347">보조배터리는 기내 수하물에만 (위탁 불가)</span></div>
@@ -462,6 +474,14 @@
       </div>
       <div class="ts-tip">💡 첫날 미리 봐두면 마지막 날 뭘 살지 정해져서 시간 절약 · 냉장품은 유통기한 3일이라 귀국 직전 구매가 유리</div>
     </div>
+  </div>
+  <div class="day-sum" data-d="0">
+    <div class="ds-title">💡 오늘의 핵심</div>
+    <div class="ds-body">
+      <b>이동만 10시간, 저녁부터가 진짜 시작</b>입니다. 14:05 출발이라 새벽에 나설 필요는 없지만, 삿포로 도착이 16:25라 호텔 체크인이 19시 가까이 됩니다. 무리해서 일정을 넣기보다 <b>징기스칸 → 수족관 → 기념품샵</b>을 여유롭게 즐기세요. 세 곳 모두 호텔 반경 5분이라 이동 부담이 없습니다.
+    </div>
+    <div class="ds-key"><span>⚠️</span><span><b>입국 스탬프</b>를 못 받으면 내일 렌트카를 못 빌립니다 — 오늘 유일한 필수 과제</span></div>
+    <div class="ds-key"><span>⏰</span><span>AOAO는 <b>21:00 입장 마감</b> — 저녁이 길어지면 수족관을 먼저 갈 것</span></div>
   </div>
 </div>
 
@@ -604,6 +624,14 @@
       </div>
       <div class="ts-tip">💡 배가 이동하며 발사해 호반 어디서든 보임 · 노천탕에서 보는 것도 가능</div>
     </div>
+  </div>
+  <div class="day-sum" data-d="1">
+    <div class="ds-title">💡 오늘의 핵심</div>
+    <div class="ds-body">
+      <b>여행의 하이라이트</b>입니다. 오전은 느긋하게, 11시 렌트 픽업 후 점심 먹고 출발하면 시간이 넉넉합니다. 도야호에서 <b>유람선 → 온천 → 가이세키 → 불꽃놀이</b>가 저녁 내내 이어지니, 오후 일정을 욕심내지 말고 코노스미카에서의 시간에 집중하는 편이 좋습니다.
+    </div>
+    <div class="ds-key"><span>⚠️</span><span><b>19:00 전 체크인</b>이 가이세키 석식 조건 — 유람선 16:30 막차를 놓치지 않으면 자동으로 맞춰집니다</span></div>
+    <div class="ds-key"><span>🚗</span><span>첫 일본 운전 — 좌측통행. 우스잔 SA에서 한 번 쉬며 적응하세요</span></div>
   </div>
 </div>
 
@@ -794,6 +822,14 @@
       <div class="ts-tip">⚠️ 21:00 마감 — 스프카레를 빨리 끝내고 20:30쯤 도착하면 30분은 즐길 수 있음. 지정석에서만 음주 가능 · TV타워 야경과 함께 마지막 밤</div>
     </div>
   </div>
+  <div class="day-sum" data-d="2">
+    <div class="ds-title">💡 오늘의 핵심</div>
+    <div class="ds-body">
+      <b>가장 빡센 날</b>입니다. 운전만 5시간이라 체력 안배가 중요합니다. 후라노에서는 비에이까지 욕심내지 말고 <b>팜토미타 + 멜론</b>에 집중하세요. 라멘은 배가 고플 때만. 저녁엔 차가 없으니 오도리에서 <b>스프카레 → 파르페 → 비어가든</b>을 걸어서 즐길 수 있습니다.
+    </div>
+    <div class="ds-key"><span>⚠️</span><span><b>19:00 렌트 반납 = 영업 종료</b> — 후라노 16:00 출발이 오늘의 마지노선</span></div>
+    <div class="ds-key"><span>🍺</span><span>비어가든도 <b>21:00 마감</b> — 반납 후 저녁은 시간이 촉박하니 순서를 미리 정할 것</span></div>
+  </div>
 </div>
 
 <div class="day-panel" id="p3">
@@ -808,7 +844,7 @@
   <div class="sec-head">① 오늘의 체크사항</div>
   <div class="check-box">
     <div class="ck-row warn"><span class="ck-ic">🍳</span><div><b>호텔 조식 불포함</b> — 아침은 니조시장에서 해결 (도보 10분)</div></div>
-    <div class="ck-row"><span class="ck-ic">🧳</span><div><b>수하물 15kg 확인</b> — 선물 무게 주의 · 초과 시 추가 요금</div></div>
+    <div class="ck-row"><span class="ck-ic">🧳</span><div><b>수하물: 본인 20kg / 아내 15kg</b> — 선물은 20kg 쪽에 몰아 담기 · 초과 시 추가 요금</div></div>
     <div class="ck-row"><span class="ck-ic">🛍️</span><div><b>냉장 선물은 마지막에</b> — 유통기한 3일 · 사계마르쉐 삿포로역점에서 구매</div></div>
     <div class="ck-row"><span class="ck-ic">🔋</span><div><b>보조배터리는 기내 수하물</b>에 — 위탁 불가</div></div>
     <div class="ck-row"><span class="ck-ic">🎫</span><div><b>김해 도착 후 21:40 리무진</b> — 좌석 13·14 · 예매 완료</div></div>
@@ -867,7 +903,7 @@
     <div class="ts-body"><b>✈️ 신치토세 국제선 체크인</b>
       <div class="ts-detail">
         <div class="td-row"><span class="td-k">여유</span><span>출발 2시간 45분 전</span></div>
-        <div class="td-row"><span class="td-k">수하물</span><span>15kg/인 위탁 · 초과 시 추가 요금</span></div>
+        <div class="td-row"><span class="td-k">수하물</span><span><b>본인 20kg</b> / 아내 15kg · 합계 35kg · 초과 시 추가 요금</span></div>
         <div class="td-row"><span class="td-k">면세</span><span>출국심사 전 국내선 터미널에 상점 많음</span></div>
       </div>
       <div class="ts-tip">💡 신치토세는 국내선 터미널 쇼핑몰이 유명 — 시간 여유 있으면 미리 둘러보기 (로이스 초콜릿 월드 등)</div>
@@ -915,6 +951,14 @@
       <div class="ts-sub">집까지 약 30~40분 · 3박 4일 일정 완료</div>
     </div>
   </div>
+  <div class="day-sum" data-d="3">
+    <div class="ds-title">💡 오늘의 핵심</div>
+    <div class="ds-body">
+      <b>여유로운 마무리</b>입니다. 17:25 출발이라 오전이 통째로 남습니다. 조식이 불포함이니 <b>니조시장에서 마지막 카이센동</b>으로 시작하고, 쇼핑은 삿포로역 사계마르쉐 한 곳에서 끝내세요. 쇼핑 장소가 JR 타는 역 안이라 동선 낭비가 없습니다.
+    </div>
+    <div class="ds-key"><span>🧳</span><span>귀국편 수하물 <b>본인 20kg / 아내 15kg</b> — 선물은 20kg 쪽에 몰아 담기</span></div>
+    <div class="ds-key"><span>🚌</span><span>김해 19:50 도착 → <b>21:40 리무진</b> (예매 완료) · 입국이 늦어지면 바로 정류장으로</span></div>
+  </div>
 </div>
 
 <!-- 준비물 · 체크리스트 -->
@@ -957,14 +1001,14 @@
   </div>
 
   <div class="acc" data-d="3">
-    <div class="acc-head"><div class="acc-icon">👕</div><div class="acc-meta"><div class="acc-time">7월 홋카이도</div><div class="acc-name">옷차림 &amp; 짐 (수하물 15kg)</div></div></div>
+    <div class="acc-head"><div class="acc-icon">👕</div><div class="acc-meta"><div class="acc-time">7월 홋카이도</div><div class="acc-name">옷차림 &amp; 짐 (수하물 15/20kg)</div></div></div>
     <div class="acc-body"><div class="acc-inner">
       <div class="item"><div class="dot"></div><span>낮 25℃ 안팎 / 아침·밤 15~18℃ — <b>얇은 겉옷·가디건 필수</b></span></div>
       <div class="item"><div class="dot"></div><span>도야호 유람선 갑판·비어가든 야외는 특히 서늘함</span></div>
       <div class="item"><div class="dot"></div><span>편한 운동화 (팜토미타·시장 많이 걸음) · 모자·선글라스 (라벤더밭 햇볕 강함)</span></div>
       <div class="item"><div class="dot"></div><span>우산/우비 (7월 홋카이도는 비 예보 잦음)</span></div>
       <div class="item"><div class="dot"></div><span>선크림 · 상비약(두통·소화·밴드) · 세면도구</span></div>
-      <div class="item"><div class="dot"></div><span>⚖️ <b>수하물 15kg</b> — 선물 담을 여유 공간 남기기 (사계마르쉐 쇼핑!)</span></div>
+      <div class="item"><div class="dot"></div><span>⚖️ <b>수하물</b> — 갈 때 각 15kg / <b>올 때 본인 20kg·아내 15kg</b> (귀국편만 증량) · 선물은 20kg 쪽에 몰아 담기</span></div>
       <div class="item"><div class="dot"></div><span>코노스미카는 유카타·어메니티 제공 — 잠옷 불필요</span></div>
     </div></div>
   </div>
@@ -1053,10 +1097,6 @@
 </div><!-- /content -->
 
 
-
-<div class="footer">
-  <div class="warn-foot">✅ 항공·호텔 3박·렌트카 모두 예약 완료! 남은 건 면허증·여권·입국 스탬프 챙기기 🎒</div>
-</div>
 
 <script>
   function sw(n) {
