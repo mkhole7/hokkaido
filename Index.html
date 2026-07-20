@@ -57,6 +57,12 @@
   .tabs { display:flex; background:#0f1118; border-bottom:1px solid var(--border); overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:100; margin-top:18px; }
   .tabs::-webkit-scrollbar { display:none; }
   .tab[data-d="4"].active { color:#c9a8f5; border-bottom-color:#6b4fa0; }
+  /* 공통 정보 구분 */
+  .common-divider { display:flex; align-items:center; gap:10px; max-width:680px; margin:38px auto 18px; padding:0 16px; }
+  .cd-line { flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); }
+  .cd-label { font-size:11px; color:var(--muted); white-space:nowrap; letter-spacing:.5px; }
+  .cd-label b { color:#8ba3e0; }
+  .common-zone { background:#0c0e15; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:4px 0 10px; }
   .tab { flex:1 0 80px; padding:14px 8px 12px; border:none; border-bottom:3px solid transparent; background:none; color:var(--muted); cursor:pointer; font-family:'Noto Sans KR',sans-serif; font-weight:700; text-align:center; transition:all .2s; display:flex; flex-direction:column; align-items:center; gap:3px; }
   .tab .te { font-size:20px; }
   .tab .tl { font-size:12px; font-weight:900; letter-spacing:1px; }
@@ -297,11 +303,11 @@
 </div>
 
 <div class="tabs">
+  <button class="tab" data-d="4" onclick="sw(4)"><span class="te">🎒</span><span class="tl">준비물</span><span class="td">체크리스트</span></button>
   <button class="tab active" data-d="0" onclick="sw(0)"><span class="te">🍺</span><span class="tl">DAY 1</span><span class="td">7/26 일</span></button>
   <button class="tab" data-d="1" onclick="sw(1)"><span class="te">🌋</span><span class="tl">DAY 2</span><span class="td">7/27 월</span></button>
   <button class="tab" data-d="2" onclick="sw(2)"><span class="te">🌸</span><span class="tl">DAY 3</span><span class="td">7/28 화</span></button>
   <button class="tab" data-d="3" onclick="sw(3)"><span class="te">🏠</span><span class="tl">DAY 4</span><span class="td">7/29 수</span></button>
-  <button class="tab" data-d="4" onclick="sw(4)"><span class="te">🎒</span><span class="tl">준비물</span><span class="td">체크리스트</span></button>
 </div>
 
 <div class="content">
@@ -669,32 +675,6 @@
   </div>
 </div>
 
-</div><!-- /content -->
-
-<div class="warnbox">
-  <div class="warnbox-in">
-    <div class="warnbox-h">🚗 일본 첫 운전 주의사항</div>
-    <div class="warnbox-i">좌측통행·우측 운전석 · 출발 전 주차장에서 5분 연습</div>
-    <div class="warnbox-i">와이퍼와 깜빡이 위치가 한국과 반대 — 처음엔 헷갈림</div>
-    <div class="warnbox-i">교차로 우회전 시 반대 차선 진입 주의</div>
-    <div class="warnbox-i">국제+국내 면허증 둘 다 지참 (하나만으론 무효)</div>
-    <div class="warnbox-i">3일차 5시간 운전 — 휴게소(SA)에서 충분히 휴식하며 무리 금지</div>
-    <div class="warnbox-i">홋카이도 외곽은 주유소가 드물어 후라노行 전 미리 주유</div>
-    <div class="warnbox-i">표기된 시각·소요시간은 대략적 기준 — 출발 전 구글맵에서 정확한 주소로 경로를 직접 확인하세요 (고속도로 이용·성수기 정체·식사/휴식 시간은 미반영)</div>
-  </div>
-</div>
-
-<div class="tips">
-  <div class="tips-title">TRAVEL TIPS &amp; INFO</div>
-  <div class="tips-grid">
-    <div class="tip"><div class="tip-h">📋 필수 준비물</div><div class="tip-i">국제+국내 운전면허증 (운전자 2명분)</div><div class="tip-i">입국 시 여권 스탬프 꼭 받기 (자동게이트 주의)</div><div class="tip-i">CarPlay USB 케이블 + 일본 데이터(한국어 내비용)</div><div class="tip-i">3박차 호텔 예약 · 해외결제 카드 / 엔화</div></div>
-    <div class="tip"><div class="tip-h">🍽️ 필수 먹거리</div><div class="tip-i">징기스칸 + 삿포로 생맥주</div><div class="tip-i">후라노 멜론 + 라벤더 아이스크림</div><div class="tip-i">코노스미카 가이세키 석식</div><div class="tip-i">카이센동 · 미소 라멘</div></div>
-    <div class="tip"><div class="tip-h">🌿 7월 말 포인트</div><div class="tip-i">라벤더 절정 — 팜토미타</div><div class="tip-i">오도리 비어가든 7/23~8/18 (7/28 OK!)</div><div class="tip-i">도야호 불꽃놀이 매일 밤</div><div class="tip-i">밤엔 서늘 — 얇은 겉옷</div></div>
-    <div class="tip"><div class="tip-h">💰 예산 (2인)</div><div class="tip-i">항공 왕복: 60~100만원</div><div class="tip-i">숙박 3박: 180~350만원</div><div class="tip-i">렌트카 2일: 12~22만원</div><div class="tip-i">식비·기타: 40~70만원</div></div>
-  </div>
-</div>
-
-
 <!-- 준비물 · 체크리스트 -->
 <div class="day-panel" id="p4">
   <div class="day-header" data-d="3" style="background:linear-gradient(135deg,#2a1a3e,#1a1426); border-color:#6b4fa0;">
@@ -785,17 +765,48 @@
   </div>
 </div>
 
-<div class="footer">
-  <div class="verdict">
-    <b>💡 이 코스의 핵심:</b> 도야호 <b style="color:#e06ba8">코노스미카</b>에서의 하룻밤이 여행의 하이라이트입니다. 객실 노천탕과 불꽃놀이 조망으로 최고의 료칸 경험을 누리고, 마지막 날(4일차)엔 차 없이 삿포로에서 여유롭게 마무리할 수 있어요.<br><br>
-    <b>가장 신경 쓸 부분은 3일차 운전</b>입니다. 도야호→후라노 3시간, 후라노→삿포로 2시간으로 하루 5시간 운전이라, 첫 일본 운전인 점을 감안해 <b>아침 일찍 출발하고 휴게소에서 충분히 쉬어가는 것</b>이 안전합니다. <b>렌트 반납이 28일 19:00로 확정</b>됐으니 후라노에서 늦어도 16시엔 출발하세요. 후라노에서는 비에이까지 욕심내지 말고 팜토미타+멜론에 집중하세요.
+</div><!-- /content -->
+
+<div class="common-zone">
+<div class="common-divider">
+  <div class="cd-line"></div>
+  <div class="cd-label">📌 아래부터는 <b>모든 날짜 공통</b> 정보입니다</div>
+  <div class="cd-line"></div>
+</div>
+
+<div class="warnbox">
+  <div class="warnbox-in">
+    <div class="warnbox-h">🚗 일본 첫 운전 주의사항</div>
+    <div class="warnbox-i">좌측통행·우측 운전석 · 출발 전 주차장에서 5분 연습</div>
+    <div class="warnbox-i">와이퍼와 깜빡이 위치가 한국과 반대 — 처음엔 헷갈림</div>
+    <div class="warnbox-i">교차로 우회전 시 반대 차선 진입 주의</div>
+    <div class="warnbox-i">국제+국내 면허증 둘 다 지참 (하나만으론 무효)</div>
+    <div class="warnbox-i">3일차 5시간 운전 — 휴게소(SA)에서 충분히 휴식하며 무리 금지</div>
+    <div class="warnbox-i">홋카이도 외곽은 주유소가 드물어 후라노行 전 미리 주유</div>
+    <div class="warnbox-i">표기된 시각·소요시간은 대략적 기준 — 출발 전 구글맵에서 정확한 주소로 경로를 직접 확인하세요 (고속도로 이용·성수기 정체·식사/휴식 시간은 미반영)</div>
   </div>
+</div>
+
+<div class="tips">
+  <div class="tips-title">TRAVEL TIPS &amp; INFO</div>
+  <div class="tips-grid">
+    <div class="tip"><div class="tip-h">📋 필수 준비물</div><div class="tip-i">국제+국내 운전면허증 (운전자 2명분)</div><div class="tip-i">입국 시 여권 스탬프 꼭 받기 (자동게이트 주의)</div><div class="tip-i">CarPlay USB 케이블 + 일본 데이터(한국어 내비용)</div><div class="tip-i">3박차 호텔 예약 · 해외결제 카드 / 엔화</div></div>
+    <div class="tip"><div class="tip-h">🍽️ 필수 먹거리</div><div class="tip-i">징기스칸 + 삿포로 생맥주</div><div class="tip-i">후라노 멜론 + 라벤더 아이스크림</div><div class="tip-i">코노스미카 가이세키 석식</div><div class="tip-i">카이센동 · 미소 라멘</div></div>
+    <div class="tip"><div class="tip-h">🌿 7월 말 포인트</div><div class="tip-i">라벤더 절정 — 팜토미타</div><div class="tip-i">오도리 비어가든 7/23~8/18 (7/28 OK!)</div><div class="tip-i">도야호 불꽃놀이 매일 밤</div><div class="tip-i">밤엔 서늘 — 얇은 겉옷</div></div>
+    <div class="tip"><div class="tip-h">💰 예산 (2인)</div><div class="tip-i">항공 왕복: 60~100만원</div><div class="tip-i">숙박 3박: 180~350만원</div><div class="tip-i">렌트카 2일: 12~22만원</div><div class="tip-i">식비·기타: 40~70만원</div></div>
+  </div>
+</div>
+
+
+</div><!-- /common-zone -->
+
+<div class="footer">
   <div class="warn-foot">✅ 항공·호텔 3박·렌트카 모두 예약 완료! 남은 건 면허증·여권·입국 스탬프 챙기기 🎒</div>
 </div>
 
 <script>
   function sw(n) {
-    document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', +t.dataset.d === n));
     ['p0','p1','p2','p3','p4'].forEach((id,i)=>{var el=document.getElementById(id); if(el) el.classList.toggle('active',i===n);});
     window.scrollTo({top: document.querySelector('.tabs').offsetTop - 5, behavior:'smooth'});
     setTimeout(function(){ if(window._fixMaps) window._fixMaps(); }, 150);
