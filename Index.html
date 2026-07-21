@@ -267,6 +267,17 @@
   .wx-dt small { color:#7a86a8; font-weight:400; }
   .wx-rain { font-size:9.5px; color:#5bb4e0; margin-top:2px; }
   .wx-err { font-size:11px; color:var(--muted); text-align:center; padding:6px 0; }
+  .wx-hr { margin-top:11px; padding-top:10px; border-top:1px solid #ffffff0d; }
+  .wx-hr-t { font-size:10px; letter-spacing:1px; color:var(--muted); margin-bottom:8px; font-weight:700; }
+  .wx-hr-scroll { display:flex; gap:5px; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; }
+  .wx-hr-scroll::-webkit-scrollbar { display:none; }
+  .wx-h { flex:0 0 auto; width:52px; text-align:center; background:#0f1118; border:1px solid var(--border); border-radius:7px; padding:7px 2px; }
+  .wx-h.now { border-color:#5bb4e0; background:#0d2030; }
+  .wx-hn { font-size:9.5px; color:var(--muted); }
+  .wx-h.now .wx-hn { color:#5bb4e0; font-weight:700; }
+  .wx-hi { font-size:15px; margin:3px 0; }
+  .wx-ht { font-size:11.5px; font-weight:700; color:#e0e6f5; }
+  .wx-hp { font-size:9px; color:#5bb4e0; margin-top:2px; min-height:11px; }
 
   /* ===== 탭 전환 모드 (아코디언은 항상 펼침) ===== */
   .acc-body { max-height:none !important; overflow:visible !important; border-top:1px solid var(--border) !important; }
@@ -1049,6 +1060,7 @@
     <div class="acc-head"><div class="acc-icon">👕</div><div class="acc-meta"><div class="acc-time">7월 홋카이도</div><div class="acc-name">옷차림 &amp; 짐 (수하물 15/20kg)</div></div></div>
     <div class="acc-body"><div class="acc-inner">
       <div class="item"><div class="dot"></div><span>낮 25℃ 안팎 / 아침·밤 15~18℃ — <b>얇은 겉옷·가디건 필수</b></span></div>
+      <div class="item"><div class="dot"></div><span>🌤️ <b>각 날짜 탭 상단에 실시간 날씨·4일 예보</b> 표시 — 출발 전·현지에서 확인 (인터넷 연결 필요)</span></div>
       <div class="item"><div class="dot"></div><span>도야호 유람선 갑판·비어가든 야외는 특히 서늘함</span></div>
       <div class="item"><div class="dot"></div><span>편한 운동화 (팜토미타·시장 많이 걸음) · 모자·선글라스 (라벤더밭 햇볕 강함)</span></div>
       <div class="item"><div class="dot"></div><span>우산/우비 (7월 홋카이도는 비 예보 잦음)</span></div>
@@ -1173,6 +1185,7 @@
       var lat = box.dataset.lat, lon = box.dataset.lon, name = box.dataset.name;
       var url = 'https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon
         + '&current=temperature_2m,apparent_temperature,weather_code,precipitation'
+        + '&hourly=temperature_2m,weather_code,precipitation_probability'
         + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
         + '&timezone=Asia%2FTokyo&forecast_days=4';
       fetch(url).then(function(r){ return r.json(); }).then(function(d){
@@ -1196,6 +1209,33 @@
               + '</div>';
           }
           html += '</div>';
+        }
+        // 시간별 예보 (현재 시각부터 24시간, 3시간 간격)
+        if(d.hourly && d.hourly.time){
+          var hr = d.hourly, nowT = new Date(c.time).getTime();
+          var startIdx = 0;
+          for(var k=0;k<hr.time.length;k++){
+            if(new Date(hr.time[k]).getTime() >= nowT){ startIdx = k; break; }
+          }
+          var cells = '';
+          for(var m=0; m<24; m+=3){
+            var idx = startIdx + m;
+            if(idx >= hr.time.length) break;
+            var t = new Date(hr.time[idx]);
+            var hh = t.getHours();
+            var lbl = (m===0 ? '지금' : (hh<10?'0':'')+hh+'시');
+            var pp = hr.precipitation_probability ? hr.precipitation_probability[idx] : null;
+            cells += '<div class="wx-h'+(m===0?' now':'')+'">'
+              + '<div class="wx-hn">'+lbl+'</div>'
+              + '<div class="wx-hi">'+ico(hr.weather_code[idx])+'</div>'
+              + '<div class="wx-ht">'+Math.round(hr.temperature_2m[idx])+'°</div>'
+              + '<div class="wx-hp">'+(pp!=null && pp>0 ? '💧'+pp+'%' : '')+'</div>'
+              + '</div>';
+          }
+          if(cells){
+            html += '<div class="wx-hr"><div class="wx-hr-t">⏱ 24시간 예보 (3시간 간격)</div>'
+              + '<div class="wx-hr-scroll">'+cells+'</div></div>';
+          }
         }
         box.innerHTML = html;
       }).catch(function(){
