@@ -251,6 +251,22 @@
   .ds-body b { color:#fff; }
   .ds-key { display:flex; gap:8px; font-size:11.5px; line-height:1.6; padding:5px 0; border-top:1px solid #ffffff0d; margin-top:9px; padding-top:9px; color:#a8b4c8; }
   .ds-key span:first-child { flex-shrink:0; }
+  /* 날씨 위젯 */
+  .wx { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px 14px; margin-bottom:14px; }
+  .wx-top { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .wx-loc { font-size:11px; color:var(--muted); letter-spacing:.5px; }
+  .wx-now { display:flex; align-items:center; gap:9px; }
+  .wx-ic { font-size:26px; line-height:1; }
+  .wx-t { font-size:22px; font-weight:900; color:#fff; }
+  .wx-d { font-size:11.5px; color:#9aa6c4; line-height:1.4; }
+  .wx-days { display:flex; gap:6px; margin-top:11px; padding-top:10px; border-top:1px solid #ffffff0d; }
+  .wx-day { flex:1; text-align:center; background:#0f1118; border-radius:7px; padding:7px 3px; }
+  .wx-dn { font-size:10px; color:var(--muted); }
+  .wx-di { font-size:17px; margin:3px 0; }
+  .wx-dt { font-size:11px; color:#d0d8e8; font-weight:700; }
+  .wx-dt small { color:#7a86a8; font-weight:400; }
+  .wx-rain { font-size:9.5px; color:#5bb4e0; margin-top:2px; }
+  .wx-err { font-size:11px; color:var(--muted); text-align:center; padding:6px 0; }
 
   /* ===== 탭 전환 모드 (아코디언은 항상 펼침) ===== */
   .acc-body { max-height:none !important; overflow:visible !important; border-top:1px solid var(--border) !important; }
@@ -326,6 +342,7 @@
     <div class="dh-title">🍺 삿포로 도착 + 첫 징기스칸 &amp; 생맥주</div>
   </div>
   <div class="daymap" id="map0"></div>
+  <div class="wx" id="wx-map0" data-lat="43.0548" data-lon="141.3540" data-name="삿포로 스스키노"><div class="wx-err">☁️ 날씨 불러오는 중…</div></div>
   <div class="daymap-cap">🚌 신치토세공항 → 스스키노(스트림 호텔) 약 1시간 30분 · 이후 징기스칸·AOAO·사계마르쉐 전부 도보 5분 내</div>
   <a class="dir-btn" href="https://www.google.com/maps/dir/新千歳空港/SAPPORO+STREAM+HOTEL" target="_blank">🧭 이 날 경로 구글맵 길찾기 <span class="sub">(공항→호텔)</span></a>
 
@@ -507,6 +524,7 @@
     <div class="dh-title">🌋 삿포로 → 도야호 · 코노스미카</div>
   </div>
   <div class="daymap" id="map1"></div>
+  <div class="wx" id="wx-map1" data-lat="42.5667" data-lon="140.8208" data-name="도야호"><div class="wx-err">☁️ 날씨 불러오는 중…</div></div>
   <div class="daymap-cap">🚗 스스키노 → 키타노구루메테이(점심) → 도야호 · 약 2시간 · 15시 유람선 → 코노스미카 체크인 · 온천 · 가이세키 · 불꽃놀이</div>
   <a class="dir-btn" href="https://www.google.com/maps/dir/トヨタレンタカー地下鉄すすきの駅前店/海鮮市場北のグルメ亭/洞爺湖汽船/ザ・レイクスイート湖の栖" target="_blank">🧭 이 날 경로 구글맵 길찾기 <span class="sub">(렌트→점심→도야호→코노스미카)</span></a>
 
@@ -657,6 +675,7 @@
     <div class="dh-title">🌸 도야호 → 후라노 → 삿포로 복귀</div>
   </div>
   <div class="daymap" id="map2"></div>
+  <div class="wx" id="wx-map2" data-lat="43.5481" data-lon="142.3896" data-name="후라노"><div class="wx-err">☁️ 날씨 불러오는 중…</div></div>
   <div class="daymap-cap">🚗 도야호 → 후라노(팜토미타) 약 3시간 → 삿포로 약 2시간 · 총 운전 ~5시간 (가장 긴 날) · 19시 렌트 반납 후 오도리 숙박</div>
   <a class="dir-btn" href="https://www.google.com/maps/dir/ザ・レイクスイート湖の栖/ファーム富田/トヨタレンタカー地下鉄すすきの駅前店/The+Royal+Park+Canvas+Sapporo+Odori+Park" target="_blank">🧭 이 날 경로 구글맵 길찾기 <span class="sub">(코노스미카→팜토미타→반납→호텔)</span></a>
 
@@ -863,6 +882,7 @@
     <div class="dh-title">🏠 마지막 쇼핑 → 귀국</div>
   </div>
   <div class="daymap" id="map3"></div>
+  <div class="wx" id="wx-map3" data-lat="43.0606" data-lon="141.3464" data-name="삿포로 오도리"><div class="wx-err">☁️ 날씨 불러오는 중…</div></div>
   <div class="daymap-cap">🚆 오도리/삿포로역(니조시장·사계마르쉐) → 신치토세공항 JR 쾌속 에어포트 약 37분</div>
   <a class="dir-btn" href="https://www.google.com/maps/dir/二条市場/札幌駅/新千歳空港" target="_blank">🧭 이 날 경로 구글맵 길찾기 <span class="sub">(니조시장→삿포로역→공항)</span></a>
 
@@ -1131,6 +1151,58 @@
     setTimeout(function(){ if(window._fixMaps) window._fixMaps(); }, 150);
   }
   function tog(el) { el.classList.toggle('open'); }
+
+  // ===== 날씨 (Open-Meteo · API 키 불필요) =====
+  (function(){
+    var WMO = {
+      0:['☀️','맑음'],1:['🌤️','대체로 맑음'],2:['⛅','구름 조금'],3:['☁️','흐림'],
+      45:['🌫️','안개'],48:['🌫️','서리 안개'],
+      51:['🌦️','약한 이슬비'],53:['🌦️','이슬비'],55:['🌧️','강한 이슬비'],
+      61:['🌦️','약한 비'],63:['🌧️','비'],65:['🌧️','강한 비'],
+      66:['🌧️','어는 비'],67:['🌧️','강한 어는 비'],
+      71:['🌨️','약한 눈'],73:['🌨️','눈'],75:['❄️','강한 눈'],77:['🌨️','싸락눈'],
+      80:['🌦️','소나기'],81:['🌧️','소나기'],82:['⛈️','강한 소나기'],
+      85:['🌨️','소낙눈'],86:['❄️','강한 소낙눈'],
+      95:['⛈️','뇌우'],96:['⛈️','우박 뇌우'],99:['⛈️','강한 우박 뇌우']
+    };
+    function ico(c){ return (WMO[c]||['🌡️','—'])[0]; }
+    function txt(c){ return (WMO[c]||['🌡️','—'])[1]; }
+    var DOW = ['일','월','화','수','목','금','토'];
+
+    document.querySelectorAll('.wx').forEach(function(box){
+      var lat = box.dataset.lat, lon = box.dataset.lon, name = box.dataset.name;
+      var url = 'https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon
+        + '&current=temperature_2m,apparent_temperature,weather_code,precipitation'
+        + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+        + '&timezone=Asia%2FTokyo&forecast_days=4';
+      fetch(url).then(function(r){ return r.json(); }).then(function(d){
+        if(!d || !d.current) throw new Error('no data');
+        var c = d.current, dl = d.daily;
+        var html = '<div class="wx-top">'
+          + '<div class="wx-now"><span class="wx-ic">'+ico(c.weather_code)+'</span>'
+          + '<div><div class="wx-t">'+Math.round(c.temperature_2m)+'°</div>'
+          + '<div class="wx-d">'+txt(c.weather_code)+' · 체감 '+Math.round(c.apparent_temperature)+'°</div></div></div>'
+          + '<div class="wx-loc">📍 '+name+' 현재</div></div>';
+        if(dl && dl.time){
+          html += '<div class="wx-days">';
+          for(var i=0;i<Math.min(4,dl.time.length);i++){
+            var dt = new Date(dl.time[i]+'T00:00:00');
+            var lbl = (i===0?'오늘':(dt.getMonth()+1)+'/'+dt.getDate()+'('+DOW[dt.getDay()]+')');
+            var pop = dl.precipitation_probability_max ? dl.precipitation_probability_max[i] : null;
+            html += '<div class="wx-day"><div class="wx-dn">'+lbl+'</div>'
+              + '<div class="wx-di">'+ico(dl.weather_code[i])+'</div>'
+              + '<div class="wx-dt">'+Math.round(dl.temperature_2m_max[i])+'° <small>'+Math.round(dl.temperature_2m_min[i])+'°</small></div>'
+              + (pop!=null && pop>0 ? '<div class="wx-rain">💧'+pop+'%</div>' : '')
+              + '</div>';
+          }
+          html += '</div>';
+        }
+        box.innerHTML = html;
+      }).catch(function(){
+        box.innerHTML = '<div class="wx-err">☁️ 날씨 정보를 불러올 수 없습니다 (인터넷 연결 확인)</div>';
+      });
+    });
+  })();
 
   // ===== 전체 개요 지도 (실제 도로 경로) =====
   (function(){
