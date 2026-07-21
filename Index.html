@@ -271,13 +271,18 @@
   .wx-hr-t { font-size:10px; letter-spacing:1px; color:var(--muted); margin-bottom:8px; font-weight:700; }
   .wx-hr-scroll { display:flex; gap:5px; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; }
   .wx-hr-scroll::-webkit-scrollbar { display:none; }
-  .wx-h { flex:0 0 auto; width:52px; text-align:center; background:#0f1118; border:1px solid var(--border); border-radius:7px; padding:7px 2px; }
+  .wx-h { flex:0 0 auto; width:46px; text-align:center; background:#0f1118; border:1px solid var(--border); border-radius:7px; padding:7px 2px; }
   .wx-h.now { border-color:#5bb4e0; background:#0d2030; }
   .wx-hn { font-size:9.5px; color:var(--muted); }
   .wx-h.now .wx-hn { color:#5bb4e0; font-weight:700; }
   .wx-hi { font-size:15px; margin:3px 0; }
   .wx-ht { font-size:11.5px; font-weight:700; color:#e0e6f5; }
   .wx-hp { font-size:9px; color:#5bb4e0; margin-top:2px; min-height:11px; }
+  .wx-hm { font-size:9px; color:#7ec8f0; min-height:11px; font-weight:700; }
+  .wx-h.rain { background:#0d2438; border-color:#2a6b8e; }
+  .wx-sum { float:right; font-size:9.5px; font-weight:400; letter-spacing:0; color:#5bb4e0; }
+  .wx-sum.dry { color:#5a6478; }
+  .wx-legend { font-size:9px; color:#5a6478; margin-top:6px; line-height:1.4; }
 
   /* ===== 탭 전환 모드 (아코디언은 항상 펼침) ===== */
   .acc-body { max-height:none !important; overflow:visible !important; border-top:1px solid var(--border) !important; }
@@ -1185,7 +1190,7 @@
       var lat = box.dataset.lat, lon = box.dataset.lon, name = box.dataset.name;
       var url = 'https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon
         + '&current=temperature_2m,apparent_temperature,weather_code,precipitation'
-        + '&hourly=temperature_2m,weather_code,precipitation_probability'
+        + '&hourly=temperature_2m,weather_code,precipitation_probability,precipitation'
         + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
         + '&timezone=Asia%2FTokyo&forecast_days=4';
       fetch(url).then(function(r){ return r.json(); }).then(function(d){
@@ -1217,24 +1222,32 @@
           for(var k=0;k<hr.time.length;k++){
             if(new Date(hr.time[k]).getTime() >= nowT){ startIdx = k; break; }
           }
-          var cells = '';
-          for(var m=0; m<24; m+=3){
+          var cells = '', rainSum = 0;
+          for(var m=0; m<24; m++){
             var idx = startIdx + m;
             if(idx >= hr.time.length) break;
             var t = new Date(hr.time[idx]);
             var hh = t.getHours();
             var lbl = (m===0 ? '지금' : (hh<10?'0':'')+hh+'시');
             var pp = hr.precipitation_probability ? hr.precipitation_probability[idx] : null;
-            cells += '<div class="wx-h'+(m===0?' now':'')+'">'
+            var mm = hr.precipitation ? hr.precipitation[idx] : null;
+            if(mm) rainSum += mm;
+            var rainCls = (mm && mm >= 1) ? ' rain' : '';
+            cells += '<div class="wx-h'+(m===0?' now':'')+rainCls+'">'
               + '<div class="wx-hn">'+lbl+'</div>'
               + '<div class="wx-hi">'+ico(hr.weather_code[idx])+'</div>'
               + '<div class="wx-ht">'+Math.round(hr.temperature_2m[idx])+'°</div>'
-              + '<div class="wx-hp">'+(pp!=null && pp>0 ? '💧'+pp+'%' : '')+'</div>'
+              + '<div class="wx-hp">'+(pp!=null && pp>0 ? pp+'%' : '')+'</div>'
+              + '<div class="wx-hm">'+(mm && mm>0 ? mm.toFixed(1) : '')+'</div>'
               + '</div>';
           }
           if(cells){
-            html += '<div class="wx-hr"><div class="wx-hr-t">⏱ 24시간 예보 (3시간 간격)</div>'
-              + '<div class="wx-hr-scroll">'+cells+'</div></div>';
+            var sumTxt = rainSum > 0
+              ? '<span class="wx-sum">24h 누적 '+rainSum.toFixed(1)+'mm</span>'
+              : '<span class="wx-sum dry">24h 강수 없음</span>';
+            html += '<div class="wx-hr"><div class="wx-hr-t">⏱ 24시간 예보 (1시간 간격) '+sumTxt+'</div>'
+              + '<div class="wx-hr-scroll">'+cells+'</div>'
+              + '<div class="wx-legend">시각 · 날씨 · 기온 · <span style="color:#5bb4e0">강수확률%</span> · <span style="color:#7ec8f0">강수량mm</span> · 파란 배경 = 시간당 1mm 이상</div></div>';
           }
         }
         box.innerHTML = html;
